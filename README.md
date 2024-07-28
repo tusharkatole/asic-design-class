@@ -1,5 +1,5 @@
 # ASIC-Design-class
-# Lab1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
+## Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
 
 Step1: Write the C Code in a file Using any text editor and save it as sum1ton.c(source code).
 
@@ -18,7 +18,7 @@ Step3: Lastly run the executable code to see the output.
 
 
 
-# Lab1B: Compiling a c code with RISC-V compiler and using O1 and Ofast.
+# Lab 1B: Compiling a c code with RISC-V compiler and using O1 and Ofast.
 
 step1: Compile the code using RISC-V GCC
 
@@ -37,7 +37,7 @@ Step2: Now put the O1 and Ofast Command and observe the output
 
 ![2024-07-18 (9)](https://github.com/user-attachments/assets/b35835eb-7a65-4a8d-a907-02f0262091fe)
 
-# Lab2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
+# Lab 2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
 
 Step1: Firstly we will check that the output using GCC compiler is same as RISC-V GCC compiler and the command we are using for RISC-V GCC compiler is spike pk sum1ton.o
 we can see same output in below image now debugging using spike simulator, use spike -d pk sum1ton.o command to enter into debugging mode using spike
@@ -81,9 +81,9 @@ So in this way we debug our code and load each line manually
 
 
 
-# Task3 :
+# Lab 3 :Identify various RISC-V instruction types and running assembly instructions according to the provided Verilog code in a RISC-V processor.
 
-Task A] Identify various RISC V instruction types
+## Task A] Identify various RISC-V instruction types
         
   The given instructions are as follows  and we need to identify the type of instruction , write thier binary and hexadecimal equivalent.
     
@@ -104,7 +104,7 @@ Task A] Identify various RISC V instruction types
          LW r03, r01, 2
          SLL r05, r01, r1
 
-**Various RISC V instruction types are**
+## Various RISC V instruction types are
 
 R-type (Register): Encodes arithmetic and logical operations. The format is funct7 rs2 rs1 funct3 rd opcode.
 
@@ -121,7 +121,7 @@ J-type (Jump): Used for jump operations. The format is imm[20] imm[10:1] imm[11]
 
 
 
-Decoding the given instruction type wise, the tabular representation of Hexadecial and 32 bit decimal equivalent is shown below.
+## Decoding the given instruction type wise, the tabular representation of Hexadecimal and 32 bit decimal equivalent is shown below.
 
 
 | Instruction       | Format | Opcode   | Funct7  | rs2  | rs1  | Funct3 | rd   | Immediate    | 32-bit Binary Encoding                           | Hexadecimal Encoding |
@@ -142,16 +142,21 @@ Decoding the given instruction type wise, the tabular representation of Hexadeci
 
 
 
-# Task B]: Running assembly instructions according to the provided Verilog code in a RISC=V processor.
+## Task B]: Running assembly instructions according to the provided Verilog code in a RISC-V processor.
 
 For the given verilog code and the instructions, the Bit pattern and the ISA according to the code can be viwed as below
 
-<img width="304" alt="329132362-24cc896a-7817-4941-be7f-95d44c35d4d8" src="https://github.com/user-attachments/assets/1bfc8217-fb15-406f-bf7d-fabd327becde">
-
-Download the two files iiitb_rv32i.v and iiitb_rv32i_tb.v , save them in same folder and put the below command to execute and run the code.After that put the gtkwave command to get the waveforms
-(for simplicity5 )
+![Inst](https://github.com/user-attachments/assets/aeb227aa-87f5-4b5f-a188-0e680d193f04)
 
 
+Download the two files iiitb_rv32i.v and iiitb_rv32i_tb.v , save them in same folder and put the below command to execute and run the code.After that put the gtkwave command to get the waveforms.
+
+
+![terminal](https://github.com/user-attachments/assets/3aaf85f3-4a85-4fce-bf46-5b06a1cae4ff)
+
+
+
+Table of given instruction set (same as in code):
 
 
 | Operation          | Hardcoded ISA | Binary Equivalent                  |
@@ -168,6 +173,9 @@ Download the two files iiitb_rv32i.v and iiitb_rv32i_tb.v , save them in same fo
 | LW R13, R1, 2     | 32'h00208681   | 0000 0000 0010 0000 1000 0110 1000 0001 |
 | SRL R16, R14, R2  | 32'h00271803   | 0000 0000 0010 0111 0001 1000 0000 0011 |
 | SLL R15, R1, R2   | 32'h00208783   | 0000 0000 0010 0000 1000 0111 1000 0011 |
+
+## Snapshot of waveform for each instruction is as shown below:
+
 
 1] ADD R6, R2, R1
 
@@ -217,23 +225,6 @@ Download the two files iiitb_rv32i.v and iiitb_rv32i_tb.v , save them in same fo
 
 
 
-The custom instructions given for individual are:
-
-
-| Instruction       | Hexadecimal Encoding | 32-bit Binary Encoding                           |
-|-------------------|-----------------------|---------------------------------------------------|
-| ADD r9, r10, r11  | `0x00B292B3`          | `0000000 01010 01011 000 01001 0110011`         |
-| SUB r11, r9, r10  | `0x400292B3`          | `0100000 01010 01001 000 01011 0110011`         |
-| AND r10, r9, r11  | `0x00B292B3`          | `0000000 01001 01011 111 01010 0110011`         |
-| OR  r8, r10, r5   | `0x00A292B3`          | `0000000 01010 00101 110 01000 0110011`         |
-| XOR r8, r9, r4    | `0x00A292B3`          | `0000000 01001 00100 100 01000 0110011`         |
-| SLT r00, r1, r4   | `0x00129233`          | `0000000 00001 00100 010 00000 0110011`         |
-| ADDI r02, r2, 5   | `0x0002 0203`         | `000000000101 00010 000 00010 0010011`         |
-| LW   r03, r01, 2  | `0x0001 0323`         | `000000000010 00001 010 00011 0000011`         |
-| SRL r06, r01, r1  | `0x0001 5653`         | `0000000 00001 00001 101 00110 0010011`         |
-| BNE r0, r0, 20    | `0x0000 A0E3`         | `00000000010100 00000 001 00000 1100011`       |
-| BEQ r0, r0, 15    | `0x0000 0003`         | `00000000001111 00000 000 00000 1100011`       |
-| SLL r05, r01, r1  | `0x0001 2523`         | `0000000 00001 00001 001 00101 0110011`         |
 
 
 
