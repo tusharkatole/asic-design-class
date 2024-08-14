@@ -226,7 +226,7 @@ Table to show standard risc-v isa and Hardcore isa for each operation :
 
 ![8](https://github.com/user-attachments/assets/16ddca02-2508-4f86-803b-fc656779e667)
 
-# Lab 4:To write a Application in C and compile it with gcc and Risc-v gcc
+# Lab 4: To write an Application in C and compile it with gcc and Risc-v gcc
 ## Application: Monthly Expenses Tracker
 ### Step1] Writing a C program in text editor
 
@@ -236,7 +236,7 @@ Table to show standard risc-v isa and Hardcore isa for each operation :
 
 ![1](https://github.com/user-attachments/assets/481e970f-4fd5-4634-a0d4-befa0a6ee939)
 
-### Step3] Compile the program with O1 and Ofast
+### Step3] Compile the code with O1 and Ofast
 
 ## With O1
 ![2](https://github.com/user-attachments/assets/26713c9c-1191-4cfe-a1d6-35f97bbf37a3)
@@ -257,24 +257,28 @@ Open new tab and type the following command
 We can see the memory allocations in the main section
 ![5(mem with O1)](https://github.com/user-attachments/assets/502c711d-9b7a-4274-b485-d5aa13add8b5)
 
-Similarly for Ofast , the memory allocations can be viewed 
+Similarly for Ofast , the memory allocations can be viewed as-
 
 ![6(ofast)](https://github.com/user-attachments/assets/0a0a5cfc-3254-449d-a72a-976d24db751b)
 
 Memory allocations using Ofast
 ![6(mem with Ofast)](https://github.com/user-attachments/assets/cede2457-bb9a-4bb4-9d2d-5e6c7515b4a8)
 
-## Step5]To verify the same using risc-v architecture use spike simulator
+## Step5] Use spike simulator to debug the code
 
-open debugger use spike -d pk todolist.c command and to execute from 0 to first address of main section use until pc 0 100b0 then press enter to check each one by one
+open debugger use spike -d pk todolist.c command and to execute from 0 to first address of main section use until pc 0 100b0 then press enter to check each execution one by one.
 
 ![spike dump](https://github.com/user-attachments/assets/c8e9888f-df75-4276-95ad-f6c92f305455)
 
-Conclusion:After compiling the "Monthly Expenses Tracker" C program with gcc compiler and RISC-V architecture uising O1 and Ofast switches same output is observed.
 
-
-
+### Below pic represents all compiles in a single frame.
 ![8all](https://github.com/user-attachments/assets/874ac3e5-4b21-4cec-8256-ed4ad89a297d)
+
+## Conclusion: It is observed that all the three compilers(i.e gcc, O1, Ofast) resulted in same output for an application Monthly Expenses Tracker.
+
+
+
+
 
 
 
