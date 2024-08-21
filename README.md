@@ -1,5 +1,7 @@
 # ASIC-Design-class
 ## Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
+<details>
+  <summary>Assignment 1 </summary>1
 
 Step1: Write the C Code in a file Using any text editor and save it as sum1ton.c(source code).
 
@@ -15,6 +17,7 @@ Step3: Lastly run the executable code to see the output.
 
 ![2024-07-17 (18)](https://github.com/user-attachments/assets/a91a1be2-d6d0-4998-9c0a-187adf80448d)
 
+</details>
 
 
 
