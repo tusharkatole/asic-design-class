@@ -456,11 +456,75 @@ The subsequent task involves performing 'read' and 'write' operations on the reg
 
 ## Implementing Branch Instructions
 
+The next step in developing the RISC-V microarchitecture is incorporating branch instructions. Beyond immediate additions or simple arithmetic, certain conditions may need to be met to redirect the PC to a branch target address. At this stage, a few branch instructions have been added, and the PC has been updated accordingly. Some of these branch instructions include:
+
+* BEQ: ==
+* BNE: !=
+* BLT: (x1 < x2) ^ (x1[31] != x2[31])
+* BGE: (x1 >= x2) ^ (x1[31] != x2[31])
+* BLTU: <
+* BGEU: >=
 
 ![14(Branch inst)](https://github.com/user-attachments/assets/61ed15f0-c268-468f-8512-4427c2a2dafd)
 
 
 ![14(Branch inst with waveform)](https://github.com/user-attachments/assets/c35ea895-1eff-4454-8bed-ef2526c296a0)
+
+
+## Applying Testbench
+
+To pass the testbench use  *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9) ;
+
+In the following snapshot we can see that the testbench has been successfully implemented. This can be confirmed by checking the LOG terminal for verification.
+
+![log](https://github.com/user-attachments/assets/99e4d6cf-81ed-42d0-9efd-4f292d5bc4dc)
+
+## Complete Pipelined RiscV CPU Micro-architecture
+
+Pipelining the CPU
+
+CPU core pipelining has now been implemented, enabling smoother retiming and significantly reducing functional bugs. Pipelining improves computation speed. To implement pipelining, we just need to add @1, @2, and so forth.
+
+
+
+
+Final Pipelined Output:-
+
+IT can be seen the values in the different registers on the viz tab. The following image shows the 2st clock cycle.
+
+![clk cycle2](https://github.com/user-attachments/assets/3523e08c-d3b3-4299-bc74-9511dcce9cd0)
+
+Similar to the previous cycle, we can step through various clock cycles and observe the updated results in the registers. In our code, we are incrementally adding values from 1 to 9 and monitoring the final output in the registers. It took 53 cycles for the register r14 to get updated to the value 45.
+
+![53th cycle](https://github.com/user-attachments/assets/8f883a2e-464f-4996-93f5-17c371473239)
+
+
+
+
+
+
+The execution of the full code takes 58 cycles including the load and the store operations.
+
+
+
+The following image shows the clock signal which contains my name clk_omkar
+![Clk cycle with name day5](https://github.com/user-attachments/assets/b31a2f99-2236-48f9-ab24-135c605a5204)
+
+
+
+The following image shows the reset signal
+
+
+
+
+The following image shows the gradual addition of the in the r14 register
+
+
+
+The following is the final block diagram of the processor designed
+
+
+
 
  
 
