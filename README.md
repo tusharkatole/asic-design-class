@@ -402,16 +402,65 @@ The given shell code is:
 ![3(instr fetch with waveform)](https://github.com/user-attachments/assets/a2f95209-2c11-459e-843b-0f4070b90965)
 
 
+To accurately decode a specific instruction, the processor must be aware of its type and format. Proper decoding is essential and must adhere to the specified format to prevent errors. In RISC-V, there are six instruction types:
+
+* Register (R) type
+* Immediate (I) type
+* Store (S) type
+* Branch (B) type
+* Upper immediate (U) type
+* Jump (J) type
+
+
+![3(InstrTypes)](https://github.com/user-attachments/assets/d9e94264-46c6-4548-b283-80e77774e50f)
+
+Instruction immediate value decode 
+
+![4(Imm_Decode)](https://github.com/user-attachments/assets/e3e92b0e-9e5a-41ff-b844-b173ab9d1f2c)
+
+![17(Viz)](https://github.com/user-attachments/assets/aca0e71d-efa9-4c13-8d22-9543c8a10b86)
+
+
+Decoding the remaining fields of an instruction, such as source and destination registers, funct, and opcode, requires using valid methods and techniques.
+
+![5(Valid)](https://github.com/user-attachments/assets/1bf59b7e-74f5-4993-81ec-a89daaff813d)
 
 
 
+![6(Base Instr set)](https://github.com/user-attachments/assets/a9a050d7-e30e-4557-83dc-9604a243279e)
+
+## Execute and Register file read/write
+The subsequent task involves performing 'read' and 'write' operations on the registers. During this process, two read and write operations can occur simultaneously. The values from src1 and src2 are obtained from the two read registers, rf_read_data1 and rf_read_data2, and are passed to the ALU unit. Currently, the ADDI and ADD instructions are executed, with the result being stored in the rf_write_data register. The diagram below illustrates the input and output registers.
 
 
+![7(Reg file Read)](https://github.com/user-attachments/assets/e41452bd-92ce-41c7-845f-37b29dd50b38)
 
 
+![8(Ref read cont)](https://github.com/user-attachments/assets/76aae5e0-cff2-4b95-9ba7-db700896390f)
+
+## Adding an ALU
+
+![12 (ALU)](https://github.com/user-attachments/assets/8dfeeae1-db00-4e45-b27d-e2cc841b4807)
 
 
+![12(ALU with Result)](https://github.com/user-attachments/assets/7e2da2de-48f7-4bc2-981b-7a7cb12509cf)
 
+
+## Register File Write
+
+![13(Reg file read)](https://github.com/user-attachments/assets/f1e26bc5-d199-4d71-a5aa-8aea1fd5eeb8)
+
+
+![13(Reg file with waveform)](https://github.com/user-attachments/assets/2af1ac32-ffb7-4ba1-8382-aa4078386967)
+
+
+## Implementing Branch Instructions
+
+
+![14(Branch inst)](https://github.com/user-attachments/assets/61ed15f0-c268-468f-8512-4427c2a2dafd)
+
+
+![14(Branch inst with waveform)](https://github.com/user-attachments/assets/c35ea895-1eff-4454-8bed-ef2526c296a0)
 
  
 
