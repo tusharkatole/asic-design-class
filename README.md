@@ -1,7 +1,7 @@
 # ASIC-Design-class
-## Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
+# Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
 <details>
-  <summary>Click to Open </summary>1
+  <summary>Click to Open </summary>
 
 Step1: Write the C Code in a file Using any text editor and save it as sum1ton.c(source code).
 
@@ -21,9 +21,10 @@ Step3: Lastly run the executable code to see the output.
 
 
 
-# Lab 1B: Compiling a c code with RISC-V compiler and using O1 and Ofast.
+## Lab 1B: Compiling a c code with RISC-V compiler and using O1 and Ofast.
 
- <summary>Click to Open </summary>1
+ <details>
+  <summary>Click to Open </summary>
 
 step1: Compile the code using RISC-V GCC
 
@@ -43,7 +44,12 @@ Step2: Now put the O1 and Ofast Command and observe the output
 ![2024-07-18 (9)](https://github.com/user-attachments/assets/b35835eb-7a65-4a8d-a907-02f0262091fe)
 
  </details>
+
+ 
 # Lab 2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
+
+<details>
+  <summary>Click to Open </summary>
 
 Step1: Firstly we will check that the output using GCC compiler is same as RISC-V GCC compiler and the command we are using for RISC-V GCC compiler is spike pk sum1ton.o
 we can see same output in below image now debugging using spike simulator, use spike -d pk sum1ton.o command to enter into debugging mode using spike
@@ -84,10 +90,16 @@ lui a0, 0x21 means load upper immediate of a0 register from bit 12 to 31.
 So in this way we debug our code and load each line manually
 
 
+</details>
+
+
 
 
 
 # Lab 3 :Identify various RISC-V instruction types and running assembly instructions according to the provided Verilog code in a RISC-V processor.
+
+<details>
+  <summary>TaskA </summary>
 
 ## Task A] Identify various RISC-V instruction types
         
@@ -145,10 +157,13 @@ J-type (Jump): Used for jump operations. The format is imm[20] imm[10:1] imm[11]
 | BEQ r0, r0, 15    | B-Type | 1100011  | -       | -    | 00000| 000    | 00000| 00000000001111 | `00000000001111 00000 000 00000 1100011`       | `0x0000 0003`         |
 | SLL r05, r01, r1  | R-Type | 0110011  | 0000000 | 00001| 00001| 001    | 00101| -            | `0000000 00001 00001 001 00101 0110011`         | `0x0001 2523`         |
 
-
+</details>
 
 
 ## Task B]: Running assembly instructions according to the provided Verilog code in a RISC-V processor.
+
+<details>
+  <summary>TaskB </summary>
 
 For the given verilog code and the instructions, the Bit pattern and the ISA according to the code can be viwed as below
 
@@ -232,8 +247,13 @@ Table to show standard risc-v isa and Hardcore isa for each operation :
 
 ![8](https://github.com/user-attachments/assets/16ddca02-2508-4f86-803b-fc656779e667)
 
+</details>
+
 # Lab 4: To write an Application in C and compile it with gcc and Risc-v gcc
 ## Application: Monthly Expenses Tracker
+
+<details>
+  <summary>Click to Open </summary>
 ### Step1] Writing a C program in text editor
 
 ![cprogram](https://github.com/user-attachments/assets/17eb2157-2328-4c6b-8fa9-d7885e438060)
@@ -281,6 +301,8 @@ open debugger use spike -d pk todolist.c command and to execute from 0 to first 
 ![8all](https://github.com/user-attachments/assets/874ac3e5-4b21-4cec-8256-ed4ad89a297d)
 
 ## Conclusion: It is observed that all the three compilers(i.e gcc, O1, Ofast) resulted in same output for an application Monthly Expenses Tracker.
+
+</details>
 
 
 
