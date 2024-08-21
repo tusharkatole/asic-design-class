@@ -1,7 +1,7 @@
 # ASIC-Design-class
 ## Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
 <details>
-  <summary>Assignment 1 </summary>1
+  <summary>Click to Open </summary>1
 
 Step1: Write the C Code in a file Using any text editor and save it as sum1ton.c(source code).
 
@@ -23,6 +23,8 @@ Step3: Lastly run the executable code to see the output.
 
 # Lab 1B: Compiling a c code with RISC-V compiler and using O1 and Ofast.
 
+ <summary>Click to Open </summary>1
+
 step1: Compile the code using RISC-V GCC
 
 ![2024-07-17 (20)](https://github.com/user-attachments/assets/1524a9d4-8bac-4ddc-96bc-3d236a49f10b)
@@ -40,6 +42,7 @@ Step2: Now put the O1 and Ofast Command and observe the output
 
 ![2024-07-18 (9)](https://github.com/user-attachments/assets/b35835eb-7a65-4a8d-a907-02f0262091fe)
 
+ </details>
 # Lab 2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
 
 Step1: Firstly we will check that the output using GCC compiler is same as RISC-V GCC compiler and the command we are using for RISC-V GCC compiler is spike pk sum1ton.o
