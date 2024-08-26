@@ -847,7 +847,7 @@ $ sandpiper-saas -i ./src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p ver
 
 ### 5]Pre-synthesis Simulation results: Signals to plot are the following:
 
-  * clk_kar: This is the clock input to the RISC-V core.
+  * clk_tus: This is the clock input to the RISC-V core.
   * reset: This is the input reset signal to the RISC-V core.
   * OUT[9:0]: This is the 10-bit output [9:0] OUT port of the RISC-V core. 
 
