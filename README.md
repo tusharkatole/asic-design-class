@@ -808,9 +808,71 @@ Code-
 \SV
    endmodule
    ```
+</details>
+
+# Lab 6:Convert the TLV to verilog using Sandpiper and then use GTKWave pre-synthesis simulation to verify the design.
+
+<details>
+  <summary>Click to Open </summary>
+  
+### The RISC-V processor was developed using TL-Verilog within the Makerchip IDE. To deploy it on an FPGA, the design had to be translated into Verilog, a task accomplished using the Sandpiper-SaaS compiler. Afterward, pre-synthesis simulations were carried out utilizing the GTKWave simulator.
 
 
- 
+### 1]Install These Required Packages:
+
+```c
+python3-pip git iverilog gtkwave
+cd ~
+sudo apt-get install python3-venv
+python3 -m venv .venv
+source ~/.venv/bin/activate
+pip3 install pyyaml click sandpiper-saas
+```
+
+### 2]Inorder to get verilog code of our TLV code ie, to translate .tlv definition of RISC-V into .v definition use the following code.
+```c
+$ sandpiper-saas -i ./src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
+```
+
+![Screenshot from 2024-08-26 22-11-38](https://github.com/user-attachments/assets/cac8a0bc-c436-481b-93e8-6f4a623bc351)
+
+
+### 3]Now to compile and simulate RISC-V design run the following code.
+![Screenshot from 2024-08-26 22-12-07](https://github.com/user-attachments/assets/8dc6ca3c-26be-4d0c-9fec-7663f27ee310)
+
+![Screenshot from 2024-08-26 22-12-27](https://github.com/user-attachments/assets/3c904e1a-29fa-4ce2-aa40-52e1acf6d791)
+
+### 4]To open the .vcd simulation file through GTKWave simulation tool use the below command
+![Screenshot from 2024-08-26 23-10-55](https://github.com/user-attachments/assets/1d02bdd4-41f8-4106-9f6d-1bdd598a2867)
+
+### 5]Pre-synthesis Simulation results: Signals to plot are the following:
+
+  * clk_kar: This is the clock input to the RISC-V core.
+  * reset: This is the input reset signal to the RISC-V core.
+  * OUT[9:0]: This is the 10-bit output [9:0] OUT port of the RISC-V core. 
+
+### 6]GTKWave Simulation waveforms:
+
+* The following image shows the clock signal which contains my name clk_tus
+![Screenshot from 2024-08-26 22-27-03](https://github.com/user-attachments/assets/cf7cba0b-5c4b-4f74-a5a9-050446541e09)
+
+* The following image shows the reset signal
+![Screenshot from 2024-08-26 22-27-19](https://github.com/user-attachments/assets/e97199a6-68c5-49fc-b3fc-7f003eedc6c3)
+
+* The following image shows the gradual addition in OUT[9:0]
+ ![Screenshot from 2024-08-26 22-27-41](https://github.com/user-attachments/assets/a4c7cb39-84fe-4206-99f1-e571766b4bfa)
+
+ ![Screenshot from 2024-08-26 22-30-07](https://github.com/user-attachments/assets/b7b215ba-fb49-48c8-9bca-4e80c2578874)
+
+* Makerchip IDE simulation result for comparison
+![reg14](https://github.com/user-attachments/assets/d8292e02-0f09-416b-845a-ea25ff8c391a)
+
+
+
+
+
+
+
 
 
 
