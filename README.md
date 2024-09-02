@@ -867,7 +867,47 @@ $ sandpiper-saas -i ./src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p ver
 * Makerchip IDE simulation result for comparison
 ![reg14](https://github.com/user-attachments/assets/d8292e02-0f09-416b-845a-ea25ff8c391a)
 
+</details>
 
+# Lab 7:Addition of Peripherals to convert the Digital output to analog output using DAC and PLL
+
+
+<details>
+  <summary>Click to Open </summary>
+
+## In this task, we're integrating two peripherals to transform digital signals into analog outputs: the Phase-Locked Loop (PLL) and the Digital-to-Analog Converter (DAC).
+
+* Phase-Locked Loop (PLL): The board features a crystal oscillator that provides a clock signal with a frequency ranging from 12 to 20 MHz. However, the processor operates at a frequency close to 100 MHz. To bridge this gap, we need a peripheral like the PLL to convert the low-frequency clock from the crystal oscillator into a higher frequency clock that matches the processor's requirements. Essentially, the PLL takes the input from the crystal oscillator and outputs a high-frequency clock signal suitable for the RISC-V core.This clock is then appended by my name CPU_clk_tus_a0
+
+* Digital-to-Analog Converter (DAC): While the processor operates using digital signals, many communication systems require analog signals for transmission or reception. To address this, we use the Digital-to-Analog Converter (DAC) peripheral. This IP converts the digital output from our RISC-V core into an analog signal, allowing us to interface with systems that rely on analog communication.
+
+Commands used to run the rvmyth.v file
+```c
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+```
+
+![Screenshot from 2024-09-02 10-12-15](https://github.com/user-attachments/assets/23f481b1-61fc-4670-8509-624f1594559c)
+
+After this we dump the ./pre_synth_sim.out file to create the .vcd file using the following command
+```c
+./pre_synth_sim.out
+```
+
+![Screenshot from 2024-09-02 10-13-10](https://github.com/user-attachments/assets/1a6e680b-f446-4cc3-8f1e-94ee823828f9)
+
+We then run this .vcd file on gtkwave to observe the output
+```c
+gtkwave pre_synth_sim.vcd
+```
+
+![Screenshot from 2024-09-02 10-33-42](https://github.com/user-attachments/assets/a3a0d707-d49f-40a5-b743-24cef4d6a200)
+
+
+The output is observed as ashown below
+![Screenshot from 2024-09-02 10-38-59](https://github.com/user-attachments/assets/1716c3c5-f0c5-4a1a-a64a-ebbda3877c7c)
+
+
+</details>
 
 
 
