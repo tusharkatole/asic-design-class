@@ -907,6 +907,12 @@ The output is observed as ashown below
 ![Screenshot from 2024-09-02 10-38-59](https://github.com/user-attachments/assets/1716c3c5-f0c5-4a1a-a64a-ebbda3877c7c)
 
 
+After zooming out we can see the Analog waveform clearly
+![Screenshot from 2024-09-03 19-25-25](https://github.com/user-attachments/assets/def69d7f-1546-410d-b526-3b4dcc335d10)
+
+![Screenshot from 2024-09-03 19-25-36](https://github.com/user-attachments/assets/311d181b-946e-4f07-b9ad-db8e1c56717d)
+
+
 </details>
 
 
