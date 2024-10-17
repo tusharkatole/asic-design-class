@@ -918,9 +918,9 @@ After zooming out we can see the Analog waveform clearly
 # Lab8:Introduction to Verilog RTL Design and Synthesis
 <details>
   <summary>Click to Open </summary>
-Firstly we need to intall the required files and clone the git repository
+### Firstly we need to intall the required files and clone the git repository
 
-## LAB 1:Intalling the Files
+## LAB 1:Installing the Files
 
 
 ![Screenshot from 2024-10-17 22-12-28](https://github.com/user-attachments/assets/1803f3c0-da0b-4edb-810f-2e214d93856e)
@@ -938,14 +938,15 @@ Firstly we need to intall the required files and clone the git repository
 ## LAB 2:Simulating one of the code using Iverilog and Gtkwave
 
 
+
+Here we have simulated good_mux.v and viewed the waveform in gtkwave:
 ![Screenshot from 2024-10-17 22-55-54](https://github.com/user-attachments/assets/9f3681b9-70c5-413e-93b7-b00685cac79f)
 
 
-
+Output Waveform:
 ![Screenshot from 2024-10-17 22-56-53](https://github.com/user-attachments/assets/8c123d3a-89de-4922-936f-1b2b10a8a43b)
 
 ## Following is the code and testbench
-
 ![Screenshot from 2024-10-17 23-41-20](https://github.com/user-attachments/assets/0078c2dc-d349-4304-a6b1-14dabfce38e2)
 
 
