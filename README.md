@@ -985,6 +985,21 @@ Hold time refers to the minimum duration after the clock edge during which the i
 
 ![5](https://github.com/user-attachments/assets/2b30ed33-d50e-4c58-958e-471852807443)
 
+## Lab-3: Introduction to Yosys:
+
+
+![Screenshot from 2024-10-18 21-59-29](https://github.com/user-attachments/assets/160202cc-5a9a-447b-943f-268031907528)
+
+
+![Screenshot from 2024-10-18 21-59-46](https://github.com/user-attachments/assets/23358954-c331-4283-b4f3-591e7afa3955)
+
+
+![Screenshot from 2024-10-18 22-00-29](https://github.com/user-attachments/assets/b761b9bc-4202-48ab-855e-314925ae32d2)
+
+
+![Screenshot from 2024-10-18 22-00-47](https://github.com/user-attachments/assets/182b2c09-8c25-45d7-ad8f-6e15060619eb)
+
+
 
 
 
