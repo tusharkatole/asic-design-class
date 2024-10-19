@@ -916,8 +916,9 @@ After zooming out we can see the Analog waveform clearly
 </details>
 
 # Lab8:Introduction to Verilog RTL Design and Synthesis
+
 <details>
-  <summary>Click to Open </summary>
+  <summary>Day1 </summary>
 ### Firstly we need to intall the required files and clone the git repository
 
 ## LAB 1:Installing the Files
@@ -1035,12 +1036,72 @@ Below window will open
 
 
 </details>
+
+<details>
+  <summary>Day2 </summary>
+## Command Used are
+  
+```c 
+sudo -i
+cd /home/tushar-katole/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+synth -top multiple_modules
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show multiple_modules
+write_verilog -noattr multiple_modules_hier.v
+!gvim multiple_modules_hier.v
+
+```
+
+Sequentially after giving above command we obtain the below results
+![Screenshot from 2024-10-19 19-56-13](https://github.com/user-attachments/assets/0522e67e-4c65-44b1-af1e-deffc56ec140)
+
+![Screenshot from 2024-10-19 19-56-50](https://github.com/user-attachments/assets/b1b9a222-a01c-420d-8b0f-aa1d21ef8630)
+
+![Screenshot from 2024-10-19 19-56-57](https://github.com/user-attachments/assets/8db52675-cc1d-4a5f-8fbe-f48ab91bd99c)
+
+
+![Screenshot from 2024-10-19 19-57-11](https://github.com/user-attachments/assets/2610d4d3-6bb6-41d8-88f1-3b5fac8a1dcd)
+
+  
+![Screenshot from 2024-10-19 19-57-38](https://github.com/user-attachments/assets/03e239b6-e557-43e2-8bc2-81d4f1f93013)
+
+
+The generated Netlist is obtained as shown below
+![Screenshot from 2024-10-19 20-02-12](https://github.com/user-attachments/assets/1f3c3e79-577c-466a-868f-0dde3d14feb5)
+
+
+![Screenshot from 2024-10-19 19-57-49](https://github.com/user-attachments/assets/889909de-c498-418f-b0ac-9443e3ea9707)
+
+
+After giving the command  ``!gvim multiple_modules_hier.v`` below window is obtained
+![Screenshot from 2024-10-19 20-01-42](https://github.com/user-attachments/assets/207cf20a-afe9-4231-9abf-5f1cf5a38716)
+
+![Screenshot from 2024-10-19 20-01-50](https://github.com/user-attachments/assets/9ea05dfd-f13e-4ce9-a1aa-52906ec8c06f)
+
+
+  </details>
+
+
+
+
+  <details>
+  <summary>Day3 </summary>
+
+
+
+</details>
+
+
+  <details>
+  <summary>Day4 </summary>
   
 
 
 
 
-
+</details>
 
 
 
