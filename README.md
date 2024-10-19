@@ -1039,6 +1039,9 @@ Below window will open
 
 <details>
   <summary>Day2 </summary>
+  
+# Hier synthesis flat synthesis
+  
 ## Command Used are
   
 ```c 
