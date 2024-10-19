@@ -1105,8 +1105,33 @@ Netlist can be generated using ``write_verilog multiple_modules_flat.v``
 
 ## Comparing Hierarchical vs. Flat Netlist
 
-We can observe that module1u and module2u are not generated in flatten netlist
+We can observe that sub-module1 and sub-module2 are not generated in flatten netlist
 ![Screenshot from 2024-10-19 20-32-58](https://github.com/user-attachments/assets/e6412d46-93ab-4a74-9ed0-61ec0059aea6)
+
+The structure after flatten is shown below (use command ``show``)
+
+![Screenshot from 2024-10-19 23-40-14](https://github.com/user-attachments/assets/f19aa877-c15a-42bc-a224-a50d6515ac1f)
+
+## Module Level Synthesis
+
+Below are the benifis of module level synthesis
+
+* Improved Design Management: Allows easier debugging, optimization, and maintenance by breaking down complex designs into smaller, manageable parts.
+* Enhanced Reusability: Enables reuse of independently synthesized modules across multiple projects, saving time and effort.
+* Faster Synthesis Times: Reduces synthesis time by handling smaller, individual modules rather than the entire design at once.
+* Optimized Resource Usage: Allows targeted optimization of individual modules for performance or area constraints, improving overall efficiency.
+* Enables Incremental Synthesis: Only modified modules need to be resynthesized after changes, speeding up iterative development.
+
+Read the files similar to the earlier steps and use ``synth -top sub_module1``
+![Screenshot from 2024-10-19 23-58-10](https://github.com/user-attachments/assets/66658a11-d6e4-4877-b730-1e9c8d3303bf)
+
+Use the command ``show`` to view the structure(it shows only AND gate i.e only one module)
+![Screenshot from 2024-10-20 00-00-36](https://github.com/user-attachments/assets/ae284800-7161-4803-a7a1-1d0f77a328b3)
+
+
+
+
+
 
 
 
