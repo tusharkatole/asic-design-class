@@ -1130,6 +1130,60 @@ Use the command ``show`` to view the structure(it shows only AND gate i.e only o
 ![Screenshot from 2024-10-20 00-00-36](https://github.com/user-attachments/assets/ae284800-7161-4803-a7a1-1d0f77a328b3)
 
 
+# Usage of Flops: Synchronous and Asynchronous D_FFs
+
+## Asynchronous Reset
+
+Simulating using iverilog and Gtkwave
+Command used are
+```c
+iverilog dff_asyncres.v tb_dff_asyncres.v
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
+
+![Screenshot from 2024-10-20 00-53-34](https://github.com/user-attachments/assets/29bb7869-177d-40bb-b177-fd080e8363af)
+
+### GtkWave output:We can see that here q changes to zero when reset goes high irrespective of clock edge
+![Screenshot from 2024-10-20 00-53-55](https://github.com/user-attachments/assets/452a1034-a4e7-4a30-8f69-bf51b109c2ba)
+
+
+## Asynchronous Set
+
+Simulating using iverilog and Gtkwave
+Command used are
+```c
+iverilog dff_async_set.v tb_dff_async_set.v
+./a.out
+gtkwave tb_dff_async_set.vcd
+```
+
+![Screenshot from 2024-10-20 01-08-01](https://github.com/user-attachments/assets/cd96b46a-9cc1-4385-b9ec-b16646332a15)
+
+
+
+### GtkWave output:We can see that here q changes to one when asynchronous set goes high irrespective of clock edge 
+![Screenshot from 2024-10-20 01-08-52](https://github.com/user-attachments/assets/c7f9ba5b-eae4-484b-81d8-21720f6aab41)
+
+
+## Synchronous Reset
+
+Simulating using iverilog and Gtkwave
+Command used are
+```c
+iverilog dff_syncres.v tb_dff_syncres.v
+./a.out
+gtkwave tb_dff_syncres.vcd
+```
+
+![Screenshot from 2024-10-20 01-18-15](https://github.com/user-attachments/assets/4f9a30d9-89f9-48a1-b1bc-7a6566cfbb6e)
+
+
+### GtkWave output:We can see that here q changes to one when synchronous reset goes high w.r.t positive edge of clock
+![Screenshot from 2024-10-20 01-18-55](https://github.com/user-attachments/assets/633c46d7-e82c-4829-8a96-43a35ef158e1)
+
+
+
 
 
 
