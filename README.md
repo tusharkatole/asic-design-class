@@ -1,5 +1,5 @@
 # ASIC-Design-class
-# Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
+## Lab 1A: Create a small C program and compile it using gcc compiler.Verify the output of the C program after execution.
 <details>
   <summary>Click to Open </summary>
 
@@ -46,7 +46,7 @@ Step2: Now put the O1 and Ofast Command and observe the output
  </details>
 
  
-# Lab 2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
+## Lab 2: Execution of the object file created by the RISC-V GCC compiler using Spike Simulator.
 
 <details>
   <summary>Click to Open </summary>
@@ -96,7 +96,7 @@ So in this way we debug our code and load each line manually
 
 
 
-# Lab 3 :Identify various RISC-V instruction types and running assembly instructions according to the provided Verilog code in a RISC-V processor.
+## Lab 3 :Identify various RISC-V instruction types and running assembly instructions according to the provided Verilog code in a RISC-V processor.
 
 <details>
   <summary>TaskA </summary>
@@ -249,7 +249,7 @@ Table to show standard risc-v isa and Hardcore isa for each operation :
 
 </details>
 
-# Lab 4: To write an Application in C and compile it with gcc and Risc-v gcc
+## Lab 4: To write an Application in C and compile it with gcc and Risc-v gcc
 ## Application: Monthly Expenses Tracker
 
 <details>
@@ -304,7 +304,7 @@ open debugger use spike -d pk todolist.c command and to execute from 0 to first 
 
 </details>
 
-# Lab 5:To design a Baisc Risc-V processor core using TL-Verilog on Makerchip.
+## Lab 5:To design a Baisc Risc-V processor core using TL-Verilog on Makerchip.
 
 <details>
   <summary>Click to Open </summary>
@@ -810,7 +810,7 @@ Code-
    ```
 </details>
 
-# Lab 6:Convert the TLV to verilog using Sandpiper and then use GTKWave pre-synthesis simulation to verify the design.
+## Lab 6:Convert the TLV to verilog using Sandpiper and then use GTKWave pre-synthesis simulation to verify the design.
 
 <details>
   <summary>Click to Open </summary>
@@ -869,7 +869,7 @@ $ sandpiper-saas -i ./src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p ver
 
 </details>
 
-# Lab 7:Addition of Peripherals to convert the Digital output to analog output using DAC and PLL
+## Lab 7:Addition of Peripherals to convert the Digital output to analog output using DAC and PLL
 
 
 <details>
@@ -915,10 +915,11 @@ After zooming out we can see the Analog waveform clearly
 
 </details>
 
-# Lab8:Introduction to Verilog RTL Design and Synthesis
+## Lab8:Introduction to Verilog RTL Design and Synthesis
 
 <details>
   <summary>Day1 </summary>
+  
 ### Firstly we need to intall the required files and clone the git repository
 
 ## LAB 1:Installing the Files
@@ -1040,7 +1041,7 @@ Below window will open
 <details>
   <summary>Day2 </summary>
   
-# Hier synthesis flat synthesis
+# Hierarchical synthesis and flat synthesis
 
 * Hierarchical Netlist: The design is structured with different modules, where each module may contain other sub-modules, creating a tree-like hierarchy.
   
@@ -1114,7 +1115,7 @@ The structure after flatten is shown below (use command ``show``)
 
 ## Module Level Synthesis
 
-Below are the benifis of module level synthesis
+### Below are the benifis of module level synthesis
 
 * Improved Design Management: Allows easier debugging, optimization, and maintenance by breaking down complex designs into smaller, manageable parts.
 * Enhanced Reusability: Enables reuse of independently synthesized modules across multiple projects, saving time and effort.
