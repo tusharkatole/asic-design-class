@@ -987,7 +987,7 @@ Hold time refers to the minimum duration after the clock edge during which the i
 
 ## Lab-3: Introduction to Yosys:
 
-
+To open the yosys give the command yosys
 ![Screenshot from 2024-10-18 21-59-29](https://github.com/user-attachments/assets/160202cc-5a9a-447b-943f-268031907528)
 
 
@@ -999,6 +999,37 @@ Hold time refers to the minimum duration after the clock edge during which the i
 
 ![Screenshot from 2024-10-18 22-00-47](https://github.com/user-attachments/assets/182b2c09-8c25-45d7-ad8f-6e15060619eb)
 
+## To convert RTL into Netlist
+
+use the command:    _abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib_
+![Screenshot from 2024-10-19 11-03-51](https://github.com/user-attachments/assets/14a5e852-fdb3-43b1-92b3-9e39db1a78a5)
+
+
+
+
+To view the netlist use the command show
+![Screenshot from 2024-10-19 11-04-16](https://github.com/user-attachments/assets/1f6dd3c3-d735-4820-a81b-7cd3cd0e15d6)
+
+
+After giving this command a new window will open showing Netlist:
+![Screenshot from 2024-10-19 11-07-31](https://github.com/user-attachments/assets/522109be-0e06-4489-bb5e-d02ae8c9748f)
+
+To observe the Netlist use the command:    _write_verilog good_mux_netlist.v_
+![Screenshot from 2024-10-19 11-20-41](https://github.com/user-attachments/assets/4e50501d-05ac-403e-9460-586e0443ef95)
+
+
+![Screenshot from 2024-10-19 11-21-25](https://github.com/user-attachments/assets/3a7343b8-3ad6-4171-a046-00df1e3a314e)
+
+
+
+After giving:   _!gvim  good_mux_netlist.v_   command another window will open 
+![Screenshot from 2024-10-19 11-21-39](https://github.com/user-attachments/assets/fa5cea39-64eb-4e86-be22-b7ac0e459874)
+
+To view it more presicely use the command:   write_verilog -noattr good_mux_netlist.v
+![Screenshot from 2024-10-19 11-43-02](https://github.com/user-attachments/assets/c2866f15-f609-4398-a359-22d13947369e)
+
+Below window will open
+![Screenshot from 2024-10-19 11-53-26](https://github.com/user-attachments/assets/7031bfa9-1efc-419b-8a6a-5f7161738e6b)
 
 
 
