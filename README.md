@@ -1041,6 +1041,8 @@ Below window will open
   <summary>Day2 </summary>
   
 # Hier synthesis flat synthesis
+
+* Hierarchical Netlist: The design is structured with different modules, where each module may contain other sub-modules, creating a tree-like hierarchy.
   
 ## Command Used are
   
@@ -1082,6 +1084,39 @@ After giving the command  ``!gvim multiple_modules_hier.v`` below window is obta
 ![Screenshot from 2024-10-19 20-01-42](https://github.com/user-attachments/assets/207cf20a-afe9-4231-9abf-5f1cf5a38716)
 
 ![Screenshot from 2024-10-19 20-01-50](https://github.com/user-attachments/assets/9ea05dfd-f13e-4ce9-a1aa-52906ec8c06f)
+
+## Flatten
+
+* Flat Netlist: All the modules and sub-modules are merged into a single level, and all connections between modules are explicitly defined without any hierarchy.
+
+Use the command ``flatten`` as shown below
+![Screenshot from 2024-10-19 20-30-40](https://github.com/user-attachments/assets/fb138397-7916-40e3-beeb-6f3845a58fb7)
+
+
+Netlist can be generated using ``write_verilog multiple_modules_flat.v``
+![Screenshot from 2024-10-19 20-30-57](https://github.com/user-attachments/assets/0a9294e1-2d48-4209-9758-0d1d8e6f6f38)
+
+
+![Screenshot from 2024-10-19 20-31-25](https://github.com/user-attachments/assets/b4c67581-7327-4883-ba6e-6b049ced5e2e)
+
+
+![Screenshot from 2024-10-19 20-31-31](https://github.com/user-attachments/assets/35b29990-33a6-4370-82bb-7ae69370fe2c)
+
+
+## Comparing Hierarchical vs. Flat Netlist
+
+We can observe that module1u and module2u are not generated in flatten netlist
+![Screenshot from 2024-10-19 20-32-58](https://github.com/user-attachments/assets/e6412d46-93ab-4a74-9ed0-61ec0059aea6)
+
+
+
+
+
+
+
+
+
+
 
 
   </details>
