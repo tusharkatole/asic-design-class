@@ -1183,19 +1183,113 @@ gtkwave tb_dff_syncres.vcd
 ![Screenshot from 2024-10-20 01-18-55](https://github.com/user-attachments/assets/633c46d7-e82c-4829-8a96-43a35ef158e1)
 
 
+# Synthesis of D-Flipflop using Yosys: Synthesized 3 types of D-Flipflops - Asynchronous Reset, Asynchronous Set and Synchronous Reset. 
+## Asynchronous Reset
+Synthesis using yosys commands used are
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_asyncres.v
+4. synth -top dff_asyncres
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+8. write_verilog -noattr dff_asyncres_netlist.v
+9. gvim dff_asyncres_netlist.v
+```
+
+![Screenshot from 2024-10-20 11-29-41](https://github.com/user-attachments/assets/2b94360f-4189-4b49-9d54-1326c2edb3af)
+
+
+![Screenshot from 2024-10-20 11-30-01](https://github.com/user-attachments/assets/095cd86c-c65b-40ac-9209-09eaa6774b6d)
+
+Generated Structure is shown below by using command ``show``
+![Screenshot from 2024-10-20 11-30-13](https://github.com/user-attachments/assets/fc36b417-f27a-483d-abb8-fedfc26b94af)
+
+
+![Screenshot from 2024-10-20 11-30-59](https://github.com/user-attachments/assets/6025f3eb-33eb-477b-805f-c19f77bace4b)
+
+## Asynchronous Set
+Synthesis using yosys commands used are
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_async_set.v
+4. synth -top dff_async_set
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+8. write_verilog -noattr dff_async_set_netlist.v
+9. gvim dff_async_set_netlist.v
+```
+![Screenshot from 2024-10-20 11-36-12](https://github.com/user-attachments/assets/5a85af44-7f29-44dd-b320-27641cbc14e0)
+
+
+![Screenshot from 2024-10-20 11-36-33](https://github.com/user-attachments/assets/89097ec9-3934-437c-b4c9-b4e4b0bb73b1)
+
+Generated Structure is shown below by using command ``show``
+![Screenshot from 2024-10-20 11-36-49](https://github.com/user-attachments/assets/215d02a1-eaec-4281-8ad5-7d3021f77485)
+![Screenshot from 2024-10-20 11-37-19](https://github.com/user-attachments/assets/9e9ac2c1-0e62-4619-a2c6-d85ea4c062ff)
+
+
+## Synchronous Reset
+Synthesis using yosys commands used are
+
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_syncres.v
+4. synth -top dff_syncres
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+8. write_verilog -noattr dff_syncres_netlist.v
+9. gvim dff_syncres_netlist.v
+```
+
+![Screenshot from 2024-10-20 11-43-16](https://github.com/user-attachments/assets/94245328-c340-4285-8140-fe858f3a0d20)
+
+![Screenshot from 2024-10-20 11-43-28](https://github.com/user-attachments/assets/dad0bccc-44f0-4daf-bde4-d1d2e3b68b3d)
+
+Generated Structure is shown below by using command ``show``
+![Screenshot from 2024-10-20 11-43-35](https://github.com/user-attachments/assets/e74ecf39-fcc5-43dc-b5b4-6f4ff90c64f8)
+![Screenshot from 2024-10-20 11-44-02](https://github.com/user-attachments/assets/c6122e1c-ad71-4f88-b4c2-d9a104b5ce1d)
+
+## Multiplication by 2: In this tutorial, we learn that multiplying a number by 2 doesn’t require specialized multiplier hardware. This operation can be easily accomplished by appending a zero to the least significant bit (LSB) of the number, effectively shifting it to the left.
+Commands Used are
+
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog mult_2.v
+4. synth -top mul2
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. show
+7. write_verilog -noattr mul2_net.v
+8. gvim mul2_net.v
+```
+![Screenshot from 2024-10-20 11-51-40](https://github.com/user-attachments/assets/2036bb65-0284-4c25-8a47-daec7f07871d)
+![Screenshot from 2024-10-20 11-51-55](https://github.com/user-attachments/assets/32a12b59-bc07-4319-ae76-91a76eea483f)
+![Screenshot from 2024-10-20 11-52-10](https://github.com/user-attachments/assets/dfe89ae8-dcf0-4568-99c1-67d1c0f114c9)
+![Screenshot from 2024-10-20 11-52-45](https://github.com/user-attachments/assets/22b0f6c3-3424-464f-8bc8-6d2c0984f68a)
 
 
 
+## Multiplication by 9: In this tutorial, we discover that multiplying a number by 9 doesn’t need dedicated multiplier hardware. This can be done by simply concatenating the number with itself, which effectively achieves the desired result.
 
+Commands Used are
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog mult_9.v
+4. synth -top mult9
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. show
+7. write_verilog -noattr mul9_net.v
+8. gvim mul9_net.v
+```
 
-
-
-
-
-
-
-
-
+![Screenshot from 2024-10-20 12-01-12](https://github.com/user-attachments/assets/71e140d8-13ac-4aee-9840-b05929923a63)
+![Screenshot from 2024-10-20 12-01-28](https://github.com/user-attachments/assets/46b206c9-a0c9-4da1-ba06-760f834cc400)
+![Screenshot from 2024-10-20 12-02-00](https://github.com/user-attachments/assets/1e94af32-be63-47cc-b7ad-d63567d8b085)
+![Screenshot from 2024-10-20 12-02-14](https://github.com/user-attachments/assets/56d4c16e-fc0e-4fce-b2a2-950d6800cfd5)
 
 
 
