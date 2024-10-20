@@ -1971,7 +1971,7 @@ endmodule
 ```
 ![Screenshot from 2024-10-20 16-26-29](https://github.com/user-attachments/assets/31d7a34b-4cc4-48d3-afe3-cdd974ba7ca7)
 
-### Gtkwave Output: We can observe that when a=1 , b=0 , c=1 , d is 0 which is incorrect it should equal to 1 this occurs due to usage of blocking statement(logic is x=a&b , d = x|c where x is intermidiate variable)
+### Gtkwave Output: We can observe that when a=1 , b=0 , c=1 , d is 0 which is incorrect it should equal to 1 this occurs due to usage of blocking statement(logic is x=a|b , d = x&c where x is intermidiate variable)
 ![Screenshot from 2024-10-20 16-28-34](https://github.com/user-attachments/assets/2d524b76-17f3-47b2-87a4-8e8786d47d16)
 
 
