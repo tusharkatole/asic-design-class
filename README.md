@@ -1516,6 +1516,153 @@ endmodule
 ![Screenshot from 2024-10-20 13-24-10](https://github.com/user-attachments/assets/66823c46-2a27-4050-afc4-867f866ee061)
 
 
+## D-Flipflop Constant 2 with Asynchronous Reset (active high) 
+
+
+Commands for Simulation using iverilog and gtkwave:
+```c
+iverilog dff_const2.v tb_dff_const2.v
+./a.out
+gtkwave tb_dff_const2.vcd
+```
+
+![Screenshot from 2024-10-20 13-32-50](https://github.com/user-attachments/assets/44feeb37-440a-4a75-9cf3-c1e4cefbb011)
+
+Gtkwave Output: We can observe that the q is always high irrespective of reset signal
+![Screenshot from 2024-10-20 13-32-59](https://github.com/user-attachments/assets/f34db80c-b0c0-41e5-801a-de529137ec4c)
+
+
+### Yosys Synthesis
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const2.v
+4. synth -top dff_const2
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+
+Code:
+```c
+//Design
+module dff_const2(input clk, input reset, output reg q); 
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b1;
+	else
+		q <= 1'b1;
+end
+endmodule
+//Testbench
+module tb_dff_const2; 
+	reg clk, reset;
+	wire q;
+
+	dff_const2 uut (.clk(clk),.reset(reset),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_const1.vcd");
+		$dumpvars(0,tb_dff_const1);
+		// Initialize Inputs
+		clk = 0;
+		reset = 1;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #1547 reset=~reset;
+endmodule
+```
+
+
+![Screenshot from 2024-10-20 13-36-12](https://github.com/user-attachments/assets/7fa7a444-60a3-4147-99cc-c6c507cdd92d)
+![Screenshot from 2024-10-20 13-36-44](https://github.com/user-attachments/assets/ff354331-4ea3-4921-912b-a73f38ede405)
+
+
+
+## D-Flipflop Constant 3 with Asynchronous Reset (active low) 
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const3.v
+4. synth -top dff_const3
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+Code:
+
+```c
+//Design
+module dff_const3(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b1;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+
+
+![Screenshot from 2024-10-20 13-41-59](https://github.com/user-attachments/assets/bca2cd53-ee1f-4119-ac95-e8212c4d6de8)
+![Screenshot from 2024-10-20 13-42-05](https://github.com/user-attachments/assets/dc05ffe1-3ce8-4d76-b8e8-073129f2054b)
+
+
+
+
+
+## D-Flipflop Constant 4 with Asynchronous Reset (active high) 
+
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const4.v
+4. synth -top dff_const4
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+Code:
+
+```c
+//Design
+module dff_const4(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b1;
+			q1 <= 1'b1;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+
+![Screenshot from 2024-10-20 13-43-47](https://github.com/user-attachments/assets/2d2fd54c-2c72-4dfc-8996-63ceb78cd6d7)
+![Screenshot from 2024-10-20 13-43-33](https://github.com/user-attachments/assets/7dc92b44-c6f3-440a-ac19-e81bb0dac859)
+
+
 
 
 
