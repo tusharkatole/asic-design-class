@@ -1778,17 +1778,219 @@ endmodule
 
 
 
-
-
-
-
-
 </details>
 
 
   <details>
   <summary>Day4 </summary>
   
+
+
+# GLS , blocking vs non blocking and Synthesis-Simulation mismatch
+
+## Design of 2x1 MUX using Ternary Operator: 
+Commands for Simulation using iverilog and gtkwave:
+```c
+iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+code:
+```c
+//Design
+module ternary_operator_mux(input i0, input i1, input sel, output y);
+	assign y = sel?i1:i0;
+endmodule
+```
+![Screenshot from 2024-10-20 15-01-35](https://github.com/user-attachments/assets/e9407a80-1d2b-4d68-b51b-0b1b3e307110)
+![Screenshot from 2024-10-20 15-01-44](https://github.com/user-attachments/assets/213ee08c-a520-4f79-a10a-2fd1a06a83ed)
+
+
+### Yosys
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog ternary_operator_mux.v
+4. synth -top ternary_operator_mux
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. write_verilog -noattr ternary_operator_mux_net.v
+8. !gvim ternary_operator_mux_net.v
+9. show
+```
+
+![Screenshot from 2024-10-20 15-05-45](https://github.com/user-attachments/assets/f0bff3d5-7b75-4f45-bdc0-a4cae6463a8b)
+![Screenshot from 2024-10-20 15-05-58](https://github.com/user-attachments/assets/0d0938b1-0098-40de-b93a-f3a6b5ea2ab2)
+
+
+Netlist Generated:
+
+```c
+//Generated Netlist
+module ternary_operator_mux(i0, il, sel, y);
+	wire _0_;
+	wire _1_;
+	wire _2_;
+	wire _3_;
+	input i0; wire i0;
+	input il; wire il;
+	input sel; wire sel;
+	output y; wire y;
+	
+	sky130_fd_sc_hd_mux2_1 _4_ (.AO(_0_),.A1(_1_),.S(_2_),.X(_3_));
+
+	assign _0_ = i0;
+	assign _1_ = il;
+	assign _2_ = sel;
+	assign y = _3_;
+endmodule
+```
+
+
+Gate Level Synthesis Command:
+```c
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+
+## Design of a Bad 2x1 MUX:
+
+Commands for Simulation using iverilog and gtkwave:
+```c
+iverilog bad_mux.v tb_bad_mux.v
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+code:
+```c
+//Design
+module bad_mux(input i0, input i1, input sel, output reg y);
+	always@(sel)
+	begin
+		if(sel)
+			y <= i1;
+		else
+			y <= i0;
+	end
+endmodule
+```
+
+
+### Yosys
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog bad_mux.v
+4. synth -top bad_mux
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. write_verilog -noattr bad_mux_net.v
+8. !gvim bad_mux_net.v
+9. show
+```
+Netlist Generated:
+
+```c
+//Generated Netlist
+module bad_mux(i0, il, sel, y);
+	wire _0_;
+	wire _1_;
+	wire _2_;
+	wire _3_;
+	input i0; wire i0;
+	input il; wire il;
+	input sel; wire sel;
+	output y; wire y;
+	
+	sky130_fd_sc_hd_mux2_1 _4_ (.AO(_0_),.A1(_1_),.S(_2_),.X(_3_));
+
+	assign _0_ = i0;
+	assign _1_ = il;
+	assign _2_ = sel;
+	assign y = _3_;
+endmodule
+```
+
+Gate Level Synthesis Command:
+```c
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+
+
+
+## Blocking Caveat: 
+
+
+
+Commands for Simulation using iverilog and gtkwave:
+```c
+iverilog blocking_caveat.v tb_blocking_caveat.v
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
+code:
+```c
+//Design
+module blocking_caveat(input a, input b, input c, output reg d);
+	reg x;
+
+	always@(*)
+	begin
+		d = x & c;
+		x = a | b;
+	end
+endmodule
+```
+
+### Yosys
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog blocking_caveat.v
+4. synth -top blocking_caveat
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. write_verilog -noattr blocking_caveat_net.v
+8. !gvim blocking_caveat_net.v
+9. show
+```
+Netlist Generated:
+
+```c
+//Generated Netlist
+module blocking_caveat(a,b,c,d);
+	wire _0_;
+	wire _1_;
+	wire _2_;
+	wire _3_;
+	wire _4_;
+	input a; wire a;
+	input b; wire b;
+	input c; wire c;
+	input d; wire d;
+	output d; wire d;
+	
+	sky130_fd_sc_hd__o21a_1 _5_ (.A1(_2_),.A2(_1_),.B1(_3_),.X(_4_));
+
+	assign _2_ = b;
+	assign _1_ = a;
+	assign _3_ = c;
+	assign d = _4_;
+endmodule
+```
+
+Gate Level Synthesis Command:
+```c
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat.v tb_blocking_caveat.v
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
 
 
 
