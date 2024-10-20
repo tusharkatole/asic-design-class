@@ -1936,7 +1936,7 @@ endmodule
 
 Gate Level Synthesis Command:
 ```c
-iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
 ./a.out
 gtkwave tb_bad_mux.vcd
 ```
@@ -1949,8 +1949,6 @@ We can observe that more no of signals are generated for GLS
 
 
 ## Blocking Caveat: 
-
-
 
 Commands for Simulation using iverilog and gtkwave:
 ```c
@@ -1973,12 +1971,8 @@ endmodule
 ```
 ![Screenshot from 2024-10-20 16-26-29](https://github.com/user-attachments/assets/31d7a34b-4cc4-48d3-afe3-cdd974ba7ca7)
 
-### Gtkwave Output: We can observe that when a=1 , b=0 , c=1 , d is 0 which is incorrect it should equal to 1 this occurs due to usage of blocking statement
+### Gtkwave Output: We can observe that when a=1 , b=0 , c=1 , d is 0 which is incorrect it should equal to 1 this occurs due to usage of blocking statement(logic is x=a&b , d = x|c where x is intermidiate variable)
 ![Screenshot from 2024-10-20 16-28-34](https://github.com/user-attachments/assets/2d524b76-17f3-47b2-87a4-8e8786d47d16)
-
-
-
-
 
 
 
@@ -1990,11 +1984,15 @@ Commands Used are:
 3. read_verilog blocking_caveat.v
 4. synth -top blocking_caveat
 5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-6. opt_clean -purge
-7. write_verilog -noattr blocking_caveat_net.v
-8. !gvim blocking_caveat_net.v
-9. show
+6. write_verilog -noattr blocking_caveat_net.v
+7. !gvim blocking_caveat_net.v
+8. show
 ```
+![Screenshot from 2024-10-20 16-40-05](https://github.com/user-attachments/assets/b216bc0b-ee53-4a36-a3ac-3539e0c99b78)
+![Screenshot from 2024-10-20 16-40-18](https://github.com/user-attachments/assets/3c981214-95cf-44d7-8920-625953a99a6c)
+
+
+
 Netlist Generated:
 
 ```c
@@ -2022,11 +2020,15 @@ endmodule
 
 Gate Level Synthesis Command:
 ```c
-iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat.v tb_blocking_caveat.v
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
 ./a.out
 gtkwave tb_blocking_caveat.vcd
 ```
 
+![Screenshot from 2024-10-20 16-44-53](https://github.com/user-attachments/assets/3e35b46b-4cdf-49c4-b138-f0172deb3fb8)
+
+We can observe the more no of signals are generated using GLS
+![Screenshot from 2024-10-20 16-44-59](https://github.com/user-attachments/assets/8501e091-60c4-4479-a583-84313dbb7ead)
 
 
 
