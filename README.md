@@ -1378,17 +1378,18 @@ endmodule
 
 # Optimization Using Multiple Modules
 
-## Multiple Module Optimization-1
+## Multiple Module Optimization1 Using Flatten
 
 Commands Used are:
 ```c
-1. yosys
-2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-3. read_verilog multiple_module_opt.v
-4. synth -top multiple_module_opt
-5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-6. opt_clean -purge
-7. show
+1.flatten
+2. yosys
+3. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+4. read_verilog multiple_module_opt.v
+5. synth -top multiple_module_opt
+6. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. opt_clean -purge
+8. show multiple_module_opt
 ```
 Code:
 ```c
@@ -1413,21 +1414,23 @@ module multiple_module_opt(input a, input b input c, input d output y);
 endmodule
 ```
 
-
-
+![Screenshot from 2024-10-20 12-58-13](https://github.com/user-attachments/assets/488c0904-3dac-4642-8f2e-4e111aeca9db)
+![Screenshot from 2024-10-20 12-58-31](https://github.com/user-attachments/assets/b406f55e-322f-44ce-9a02-7ee4740d6213)
+![Screenshot from 2024-10-20 12-58-38](https://github.com/user-attachments/assets/53c4eeda-55cd-4ab1-ab98-b59f6e938366)
 
 
 ## Multiple Module Optimization-2
 
 Commands Used are:
 ```c
-1. yosys
-2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-3. read_verilog multiple_module_opt2.v
-4. synth -top multiple_module_opt2
-5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-6. opt_clean -purge
-7. show
+1.flatten
+2. yosys
+3. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+4. read_verilog multiple_module_opt2.v
+5. synth -top multiple_module_opt2
+6. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. opt_clean -purge
+8. show multiple_module_opt2
 ```
 
 Code:
@@ -1447,6 +1450,84 @@ module multiple_module_opt2(input a, input b input c, input d, output y);
 endmodule
 
 ```
+![Screenshot from 2024-10-20 13-01-20](https://github.com/user-attachments/assets/2e2b9f16-b184-4a03-93e7-f7e1bd3c6c9b)
+![Screenshot from 2024-10-20 13-01-40](https://github.com/user-attachments/assets/b1b1e7ae-973f-4cd0-8f37-c80c478c4e13)
+![Screenshot from 2024-10-20 13-01-47](https://github.com/user-attachments/assets/d31d4d13-dea4-4079-abbd-eff401d7dca8)
+
+## D-Flipflop Constant 1 with Asynchronous Reset (active low)
+
+Commands for Simulation using iverilog and gtkwave:
+```c
+iverilog dff_const1.v tb_dff_const1.v
+./a.out
+gtkwave tb_dff_const1.vcd
+```
+![Screenshot from 2024-10-20 13-16-05](https://github.com/user-attachments/assets/1917abbc-87ca-478a-b981-616589482c56)
+
+Gtkwave Output: We can observe that the q is high when reset is zero and it does not depend on clock edge
+![Screenshot from 2024-10-20 13-16-17](https://github.com/user-attachments/assets/76570cdc-7d9d-491c-bf1b-bc332b4b0e05)
+
+### Yosys Synthesis
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const1.v
+4. synth -top dff_const1
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+
+Code:
+```c
+//Design
+module dff_const1(input clk, input reset, output reg q); 
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b0;
+	else
+		q <= 1'b1;
+end
+endmodule
+//Testbench
+module tb_dff_const1; 
+	reg clk, reset;
+	wire q;
+
+	dff_const1 uut (.clk(clk),.reset(reset),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_const1.vcd");
+		$dumpvars(0,tb_dff_const1);
+		// Initialize Inputs
+		clk = 0;
+		reset = 1;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #1547 reset=~reset;
+endmodule
+```
+
+
+![Screenshot from 2024-10-20 13-23-38](https://github.com/user-attachments/assets/c119c57d-a4f0-40fe-bc89-7b7c30740a83)
+![Screenshot from 2024-10-20 13-24-10](https://github.com/user-attachments/assets/66823c46-2a27-4050-afc4-867f866ee061)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
