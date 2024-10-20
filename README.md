@@ -1301,6 +1301,157 @@ Commands Used are
   <details>
   <summary>Day3 </summary>
 
+  # Design Optimization techniques
+
+  ## Design infers 2 input AND Gate:
+  Commands Used are:
+  ```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog opt_check2.v
+4. synth -top opt_check2
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. show
+```
+code:
+```c
+//Design
+module opt_check(input a, input b, output y);
+	assign y = a?b:0;
+endmodule
+```
+
+![Screenshot from 2024-10-20 12-10-53](https://github.com/user-attachments/assets/71df7650-b647-4b34-81e3-cd5520649ad1)
+![Screenshot from 2024-10-20 12-11-15](https://github.com/user-attachments/assets/c59c05f5-bbb4-4c1a-bb8d-643b52bbbcc9)
+![Screenshot from 2024-10-20 12-11-26](https://github.com/user-attachments/assets/5a89b18a-c2ff-417b-9a13-f1f8f12c10b7)
+
+## Design infers 2 input OR Gate
+  Commands Used are:
+  ```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog opt_check2.v
+4. synth -top opt_check2
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. show
+```
+code:
+```c
+//Design
+module opt_check2(input a, input b, output y);
+	assign y = a?1:b;
+endmodule
+```
+
+![Screenshot from 2024-10-20 12-16-33](https://github.com/user-attachments/assets/37efef12-fe87-43d0-8885-2eff594f983c)
+![Screenshot from 2024-10-20 12-16-44](https://github.com/user-attachments/assets/40292864-cf27-45c6-b790-e32d1134ed7a)
+![Screenshot from 2024-10-20 12-17-02](https://github.com/user-attachments/assets/b77eb80d-1e13-41a0-8408-df75066a7f28)
+
+
+
+## Design infers 3 input AND Gate
+  Commands Used are:
+  ```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog opt_check3.v
+4. synth -top opt_check3
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. show
+```
+
+code:
+```c
+//Design
+module opt_check2(input a, input b, input c, output y);
+	assign y = a?(b?c:0):0;
+endmodule
+```
+
+![Screenshot from 2024-10-20 12-19-00](https://github.com/user-attachments/assets/67dbc049-31e6-4adc-9c69-3452a3f68de1)
+![Screenshot from 2024-10-20 12-19-07](https://github.com/user-attachments/assets/9d488d8b-8977-4e35-8c56-2b301939d2cc)
+![Screenshot from 2024-10-20 12-19-11](https://github.com/user-attachments/assets/4c19d71c-7340-4b0b-8c1a-4871641bd75a)
+
+
+# Optimization Using Multiple Modules
+
+## Multiple Module Optimization-1
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog multiple_module_opt.v
+4. synth -top multiple_module_opt
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. show
+```
+Code:
+```c
+//Design
+
+module sub_module1(input a, input b, output y);
+	assign y = a & b;
+endmodule
+
+module sub_module2 (input a, input b output y);
+	assign y = a^b;
+endmodule
+
+module multiple_module_opt(input a, input b input c, input d output y);
+	wire n1,n2, n3;
+
+	sub_module1 U1 (.a(a), .b(1'b1), .y(n1));
+	sub_module2 U2 (.a(n1), .b(1'b0), .y(n));
+	sub_module2 U3 (.a(b), .b(d), .y(n3));
+
+	assign y = c | (b & n1);
+endmodule
+```
+
+
+
+
+
+## Multiple Module Optimization-2
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog multiple_module_opt2.v
+4. synth -top multiple_module_opt2
+5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+6. opt_clean -purge
+7. show
+```
+
+Code:
+```c
+//Design
+module sub_module(input a input b output y);
+	assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a, input b input c, input d, output y);
+	wire n1,n2, n3;
+
+	sub_module U1 (.a(a), .b(1'b0), y(n));
+	sub_module U2 (.a(b), .b(c), .y(n2));
+	sub_module U3 (.a(n2), .b(d), .y(n));
+	sub_module U4 (.a(n3), .b(n1), .y(y));
+endmodule
+
+```
+
+
+
+
+
 
 
 </details>
