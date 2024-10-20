@@ -1803,6 +1803,8 @@ module ternary_operator_mux(input i0, input i1, input sel, output y);
 endmodule
 ```
 ![Screenshot from 2024-10-20 15-01-35](https://github.com/user-attachments/assets/e9407a80-1d2b-4d68-b51b-0b1b3e307110)
+
+Gtkwave Output
 ![Screenshot from 2024-10-20 15-01-44](https://github.com/user-attachments/assets/213ee08c-a520-4f79-a10a-2fd1a06a83ed)
 
 
@@ -1814,10 +1816,9 @@ Commands Used are:
 3. read_verilog ternary_operator_mux.v
 4. synth -top ternary_operator_mux
 5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-6. opt_clean -purge
-7. write_verilog -noattr ternary_operator_mux_net.v
-8. !gvim ternary_operator_mux_net.v
-9. show
+6. write_verilog -noattr ternary_operator_mux_net.v
+7. !gvim ternary_operator_mux_net.v
+8. show
 ```
 
 ![Screenshot from 2024-10-20 15-05-45](https://github.com/user-attachments/assets/f0bff3d5-7b75-4f45-bdc0-a4cae6463a8b)
@@ -1850,10 +1851,15 @@ endmodule
 
 Gate Level Synthesis Command:
 ```c
-iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux.v tb_ternary_operator_mux.v
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
 ./a.out
 gtkwave tb_ternary_operator_mux.vcd
 ```
+![Screenshot from 2024-10-20 15-40-05](https://github.com/user-attachments/assets/feb19f53-3755-4531-bb5b-ebcca13af4bb)
+
+
+We can observe that more no of signals are generated using GLS
+![Screenshot from 2024-10-20 15-42-27](https://github.com/user-attachments/assets/eceab4e3-91b6-40cb-b3f6-b464ea34ed1f)
 
 ## Design of a Bad 2x1 MUX:
 
@@ -1876,6 +1882,15 @@ module bad_mux(input i0, input i1, input sel, output reg y);
 	end
 endmodule
 ```
+![Screenshot from 2024-10-20 15-48-26](https://github.com/user-attachments/assets/7fabc1e7-11b8-4165-a97f-b497bced2fd6)
+
+
+Gtkwave Output
+![Screenshot from 2024-10-20 15-48-49](https://github.com/user-attachments/assets/275a4e63-62a9-4b30-9e44-3951d9f25da3)
+
+
+
+
 
 
 ### Yosys
@@ -1886,11 +1901,15 @@ Commands Used are:
 3. read_verilog bad_mux.v
 4. synth -top bad_mux
 5. abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-6. opt_clean -purge
-7. write_verilog -noattr bad_mux_net.v
-8. !gvim bad_mux_net.v
-9. show
+6. write_verilog -noattr bad_mux_net.v
+7. !gvim bad_mux_net.v
+8. show
 ```
+
+![Screenshot from 2024-10-20 15-53-31](https://github.com/user-attachments/assets/c47de5c0-762e-4876-8ed5-13e6d553f1c1)
+
+![Screenshot from 2024-10-20 15-54-19](https://github.com/user-attachments/assets/ff554584-5d3a-49b6-83ce-a6e8d71afa3f)
+
 Netlist Generated:
 
 ```c
@@ -1914,6 +1933,7 @@ module bad_mux(i0, il, sel, y);
 endmodule
 ```
 
+
 Gate Level Synthesis Command:
 ```c
 iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
@@ -1921,6 +1941,11 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 gtkwave tb_bad_mux.vcd
 ```
 
+![Screenshot from 2024-10-20 15-58-04](https://github.com/user-attachments/assets/b92eb8b5-0d13-45cc-8d8b-697a3052b067)
+
+
+We can observe that more no of signals are generated for GLS
+![Screenshot from 2024-10-20 15-58-12](https://github.com/user-attachments/assets/d961dbae-4290-44bd-bc62-b02a5403952b)
 
 
 ## Blocking Caveat: 
@@ -1946,6 +1971,16 @@ module blocking_caveat(input a, input b, input c, output reg d);
 	end
 endmodule
 ```
+![Screenshot from 2024-10-20 16-26-29](https://github.com/user-attachments/assets/31d7a34b-4cc4-48d3-afe3-cdd974ba7ca7)
+
+### Gtkwave Output: We can observe that when a=1 , b=0 , c=1 , d is 0 which is incorrect it should equal to 1 this occurs due to usage of blocking statement
+![Screenshot from 2024-10-20 16-28-34](https://github.com/user-attachments/assets/2d524b76-17f3-47b2-87a4-8e8786d47d16)
+
+
+
+
+
+
 
 ### Yosys
 Commands Used are:
