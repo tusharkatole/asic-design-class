@@ -2030,6 +2030,8 @@ gtkwave tb_blocking_caveat.vcd
 We can observe the more no of signals are generated using GLS and no occurence of mismatched 
 ![Screenshot from 2024-10-20 16-50-23](https://github.com/user-attachments/assets/c211c589-26de-4024-9c17-5ee37b1cbb30)
 
+### Conclusion: It is observed that when a=0, b=0 ,c=1 obtained d=0 which is correct , so the mismatch error is solved here using GLS
+
 
 
 </details>
