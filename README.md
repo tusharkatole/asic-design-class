@@ -1663,15 +1663,116 @@ endmodule
 ![Screenshot from 2024-10-20 13-43-33](https://github.com/user-attachments/assets/7dc92b44-c6f3-440a-ac19-e81bb0dac859)
 
 
+## D-Flipflop Constant 5 with Asynchronous Reset 
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const5.v
+4. synth -top dff_const5
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+Code:
+
+```c
+//Design
+module dff_const5(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b0;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+![Screenshot from 2024-10-20 14-24-20](https://github.com/user-attachments/assets/ff02f77f-b74b-4eca-94a7-c3eaa0adad98)
+![Screenshot from 2024-10-20 14-24-42](https://github.com/user-attachments/assets/694fe788-0222-4f0b-883b-febcc0315155)
+
+
+## Counter Optimization 1: 
+
+
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog dff_const5.v
+4. synth -top dff_const5
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+Code:
+
+```c
+//Design
+module dff_const5(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b0;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+![Screenshot from 2024-10-20 14-29-08](https://github.com/user-attachments/assets/086fea8c-d614-4f3b-8fc4-c84399776616)
+![Screenshot from 2024-10-20 14-29-17](https://github.com/user-attachments/assets/307371df-6cb7-4ea1-b1e2-7d1b1f9f2f9d)
 
 
 
 
 
+## Counter Optimization 2: 
 
 
+Commands Used are:
+```c
+1. yosys
+2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+3. read_verilog counter_opt2.v
+4. synth -top counter_opt
+5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+7. show
+```
+Code:
 
+```c
+//Design	
+module counter_opt2 (input clk, input reset, output q);
+	reg [2:0] count;
+	assign q = (count[2:0] == 3'b100);
+	
+	always @(posedge clk,posedge reset)
+	begin
+		if(reset)
+			count <= 3'b000;
+		else
+			count <= count + 1;
+	end
+endmodule
+```
 
+![Screenshot from 2024-10-20 14-37-27](https://github.com/user-attachments/assets/08878738-79fa-49fc-ac35-0a78412c31bd)
+![Screenshot from 2024-10-20 14-37-44](https://github.com/user-attachments/assets/d75524ee-de54-4c03-8022-40fb3d8b66a0)
 
 
 
