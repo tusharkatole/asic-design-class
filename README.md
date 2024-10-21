@@ -1707,30 +1707,25 @@ Commands Used are:
 ```c
 1. yosys
 2. read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-3. read_verilog dff_const5.v
-4. synth -top dff_const5
+3. read_verilog counter_opt.v
+4. synth -top counter_opt
 5. dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 7. show
 ```
 Code:
 
 ```c
-//Design
-module dff_const5(input clk, input reset, output reg q); 
-	reg q1;
-
-	always @(posedge clk, posedge reset)
+//Design	
+module counter_opt (input clk, input reset, output q);
+	reg [2:0] count;
+	assign q = count[0];
+	
+	always @(posedge clk,posedge reset)
 	begin
 		if(reset)
-		begin
-			q <= 1'b0;
-			q1 <= 1'b0;
-		end
+			count <= 3'b000;
 		else
-		begin	
-			q1 <= 1'b1;
-			q <= q1;
-		end
+			count <= count + 1;
 	end
 endmodule
 ```
