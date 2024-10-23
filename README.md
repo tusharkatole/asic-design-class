@@ -2037,8 +2037,6 @@ We can observe the more no of signals are generated using GLS and no occurence o
   <details>
   <summary>Click to open </summary>
 
-## Synthesis of RISC-V using yosys and Post synthesis simulation of Babysoc using iverilog GTKwave
-
 ###  Performing Yosys
 
 Command Used are
@@ -2113,7 +2111,7 @@ zoom out view
 ![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
 
 
-#### Conclusion:From the above comparison of waveforms from both the labs we can conclude that the acheived output matches the expectation i.e., the sum of numbers from 1 to 9 which is 45 in decimal or 2D in hexadecimal format.Stating that O1=O2
+#### Conclusion: From the above comparison of waveforms from both the labs we can conclude that the acheived output matches the expectation i.e., the sum of numbers from 1 to 9 which is 45 in decimal or 2D in hexadecimal format. Stating that O1=O2
 
 
 
