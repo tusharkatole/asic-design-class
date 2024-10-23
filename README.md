@@ -2032,4 +2032,33 @@ We can observe the more no of signals are generated using GLS and no occurence o
 </details>
 
 
+## Lab9:Synthesize RISC-V and compare output with functional simulations, and show the following 
+
+  <details>
+  <summary>Click to open </summary>
+
+  ### 1.To perform iverilog compilation for rvmyth.v file generated from TL Verilog using Sandpiper tool, completed in previous Lab
+  
+  Commands Used are:
+  ```c
+1.iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+2. ./pre_synth_sim.out
+3. gtkwave pre_synth_sim.vcd
+```
+
+![Screenshot from 2024-10-23 20-14-02](https://github.com/user-attachments/assets/74a91886-eeb2-4c24-ae58-296b9c57030b)
+
+
+![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
+
+  
+
+
+
+
+
+
+
+</details>
+
 
