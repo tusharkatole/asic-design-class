@@ -2070,6 +2070,11 @@ write_verilog -noattr vsdbabysoc.synth.v
 ![Screenshot from 2024-10-24 01-30-51](https://github.com/user-attachments/assets/29f66f54-963c-410e-8d9c-e11b8b7978b6)
 only few snaps are shared
 
+### Synthesised Circuit Diagram using standard cells in the library:
+
+![Screenshot from 2024-10-24 01-03-12](https://github.com/user-attachments/assets/ddf4bfe6-4c5a-49d8-bd24-dc2187f2e536)
+
+
 
 ### Post Synthesis Similation (GLS):
 
@@ -2081,6 +2086,9 @@ mkdir -p output/post_synth_sim && iverilog -o output/post_synth_sim/post_synth_s
 gtkwave post_synth_sim.vcd
 
 ```
+![Screenshot from 2024-10-24 02-07-47](https://github.com/user-attachments/assets/3edc4500-11ce-4a5b-b82a-c7a497a854cd)
+
+
 ## Generated Waveform post Gate Level Synthesis simulation:
 
 ![Screenshot from 2024-10-24 01-16-57](https://github.com/user-attachments/assets/df3d96d3-bcce-48a1-98fc-f8e2e47e6c2a)
@@ -2105,8 +2113,7 @@ zoom out view
 ![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
 
 
-Conclusion:
-From the above comparison of waveforms from both the labs we can conclude that the acheived output matches the expectation i.e., the sum of numbers from 1 to 9 which is 45 in decimal or 2D in hexadecimal format.Stating that O1=O2
+#### Conclusion:From the above comparison of waveforms from both the labs we can conclude that the acheived output matches the expectation i.e., the sum of numbers from 1 to 9 which is 45 in decimal or 2D in hexadecimal format.Stating that O1=O2
 
 
 
