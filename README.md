@@ -2037,7 +2037,7 @@ We can observe the more no of signals are generated using GLS and no occurence o
   <details>
   <summary>Click to open </summary>
 
-  ### 1.To perform iverilog compilation for rvmyth.v file generated from TL Verilog using Sandpiper tool, completed in previous Lab
+### To perform iverilog compilation for rvmyth.v file generated from TL Verilog using Sandpiper tool, completed in previous Lab
   
   Commands Used are:
   ```c
@@ -2045,11 +2045,62 @@ We can observe the more no of signals are generated using GLS and no occurence o
 2. ./pre_synth_sim.out
 3. gtkwave pre_synth_sim.vcd
 ```
-
+![pre_syn](https://github.com/user-attachments/assets/ce4b957b-78fe-4dd7-9f31-ae4db5b289b1)
 ![Screenshot from 2024-10-23 20-14-02](https://github.com/user-attachments/assets/74a91886-eeb2-4c24-ae58-296b9c57030b)
-
-
 ![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
+
+## Yosys
+
+Command Used are
+
+```c
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib ../lib/avsddac.lib
+read_liberty -lib ../lib/avsdpll.lib
+read_verilog vsdbabysoc.v
+read_verilog rvmyth.v
+read_verilog clk_gate.v
+synth -top vsdbabysoc
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show vsdbabysoc
+write_verilog -noattr vsdbabysoc.synth.v
+!gvim vsdbabysoc.synth.v
+```
+
+
+![Screenshot from 2024-10-24 01-04-51](https://github.com/user-attachments/assets/113557f2-c1c6-4d73-b727-62c25ca95a2a)
+![Screenshot from 2024-10-24 01-05-00](https://github.com/user-attachments/assets/f5e16f87-c2ad-4d4a-ad27-b8fac45fe051)
+
+### Generated Netlist:
+
+![Screenshot from 2024-10-24 01-22-41](https://github.com/user-attachments/assets/5903c911-0099-449f-b7aa-1925a89527ca)
+![Screenshot from 2024-10-24 01-23-15](https://github.com/user-attachments/assets/34a985c9-1293-46d6-8b11-0853a78ccea2)
+![Screenshot from 2024-10-24 01-30-51](https://github.com/user-attachments/assets/29f66f54-963c-410e-8d9c-e11b8b7978b6)
+only few snaps are shared
+
+
+### Post Synthesis Similation (GLS):
+
+Commands Used are:
+
+```c
+cd VSDBabySoC
+mkdir -p output/post_synth_sim && iverilog -o output/post_synth_sim/post_synth_sim.out -DPOST_SYNTH_SIM -DFUNCTIONAL -DUNIT_DELAY=#1 -I src/module/include -I src/module -I src/gls_model src/module/testbench.v && cd output/post_synth_sim && ./post_synth_sim.out
+gtkwave post_synth_sim.vcd
+
+```
+## Generated Waveform post Gate Level Synthesis simulation:
+
+![Screenshot from 2024-10-24 01-16-57](https://github.com/user-attachments/assets/df3d96d3-bcce-48a1-98fc-f8e2e47e6c2a)
+![Screenshot from 2024-10-24 01-17-18](https://github.com/user-attachments/assets/bbb4568f-f379-4e9e-9ef5-88de601a99c2)
+
+
+
+
+
+
 
   
 
