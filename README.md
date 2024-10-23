@@ -2037,19 +2037,9 @@ We can observe the more no of signals are generated using GLS and no occurence o
   <details>
   <summary>Click to open </summary>
 
-### To perform iverilog compilation for rvmyth.v file generated from TL Verilog using Sandpiper tool, completed in previous Lab
-  
-  Commands Used are:
-  ```c
-1.iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
-2. ./pre_synth_sim.out
-3. gtkwave pre_synth_sim.vcd
-```
-![pre_syn](https://github.com/user-attachments/assets/ce4b957b-78fe-4dd7-9f31-ae4db5b289b1)
-![Screenshot from 2024-10-23 20-14-02](https://github.com/user-attachments/assets/74a91886-eeb2-4c24-ae58-296b9c57030b)
-![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
+## Synthesis of RISC-V using yosys and Post synthesis simulation of Babysoc using iverilog GTKwave
 
-## Yosys
+###  Performing Yosys
 
 Command Used are
 
@@ -2094,7 +2084,29 @@ gtkwave post_synth_sim.vcd
 ## Generated Waveform post Gate Level Synthesis simulation:
 
 ![Screenshot from 2024-10-24 01-16-57](https://github.com/user-attachments/assets/df3d96d3-bcce-48a1-98fc-f8e2e47e6c2a)
+
+zoom out view
 ![Screenshot from 2024-10-24 01-17-18](https://github.com/user-attachments/assets/bbb4568f-f379-4e9e-9ef5-88de601a99c2)
+
+
+
+### To perform iverilog compilation for rvmyth.v file generated from TL Verilog using Sandpiper tool, completed in previous Lab
+  
+  Commands Used are:
+  ```c
+1.iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+2. ./pre_synth_sim.out
+3. gtkwave pre_synth_sim.vcd
+```
+![pre_syn](https://github.com/user-attachments/assets/ce4b957b-78fe-4dd7-9f31-ae4db5b289b1)
+![Screenshot from 2024-10-23 20-14-02](https://github.com/user-attachments/assets/74a91886-eeb2-4c24-ae58-296b9c57030b)
+
+zoom out view
+![Screenshot from 2024-10-23 20-15-54](https://github.com/user-attachments/assets/5c7758f2-ec6d-4b53-8194-f6409bec82b0)
+
+
+Conclusion:
+From the above comparison of waveforms from both the labs we can conclude that the acheived output matches the expectation i.e., the sum of numbers from 1 to 9 which is 45 in decimal or 2D in hexadecimal format.Stating that O1=O2
 
 
 
