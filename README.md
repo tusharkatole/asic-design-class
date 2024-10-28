@@ -2117,7 +2117,7 @@ zoom out view
 
 </details>
 
-# Lab10:Static Timing Analysis for Synthesized Risc-V Core using OpenSTA
+## Lab10:Static Timing Analysis for Synthesized Risc-V Core using OpenSTA
 
  <details>
   <summary>Click to open </summary>
