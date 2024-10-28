@@ -2191,10 +2191,10 @@ The following screenshots illustrate timing reports:
 
 ![Screenshot from 2024-10-28 18-36-21](https://github.com/user-attachments/assets/6c541262-1265-4c51-a83b-b16338837d99)
 
-
+reg2reg Setup report:
 ![Screenshot from 2024-10-28 18-36-50](https://github.com/user-attachments/assets/6813a809-9b5e-4210-8bfa-c17a2bafa273)
 
-
+reg2reg Hold report:
 ![Screenshot from 2024-10-28 18-37-28](https://github.com/user-attachments/assets/432c713f-42a9-4e66-b75d-f9fe8d3f7f94)
 
 ### The max path report indicates Setup Slack while the min path report shows Hold Slack measurements.
