@@ -2206,3 +2206,58 @@ reg2reg Hold report:
   
 
 
+</details>
+
+
+
+## Lab11:PVT Corner Analysis for Synthesized VSDBabySoC using OpenSTA
+ <details>
+  <summary>Click to open </summary>
+
+The STA checks are performed across all the corners to confirm the design meets the target timing requirements.
+
+The worst max path (Setup-critical) corners in the sub-40nm process nodes are usually: ss_LowTemp_LowVolt, ss_HighTemp_LowVolt (Slowest corners) The worst min path (Hold-critical) corners being: ff_LowTemp_HighVolt,ff_HighTemp_HighVolt (Fastest corners).
+
+The below tcl script sta_pvt.tcl can be run to performt the STA across the PVT corners for which the sky130 lib files are available:
+Below are the contents of the constraint file that has to be put in sta file
+```c
+
+
+```
+
+
+The SDC file used for generating clock and data constraints is given below:
+```c
+
+
+```
+
+Run below commands on terminal to source the sta_pvt.tcl file
+
+
+
+A table comprising of the slacks report is shown below:
+![Screenshot 2024-11-04 141717](https://github.com/user-attachments/assets/abdae209-6309-4505-a161-4ee578de35d8)
+
+
+
+### Total Negative Slack:Column1
+![Screenshot 2024-11-04 133020](https://github.com/user-attachments/assets/18b1de18-e641-4ab3-ba39-6ec7c5325a3f)
+
+### Worst (Negative slack)Setup Slack:Column2
+
+![Screenshot 2024-11-04 135521](https://github.com/user-attachments/assets/0b0fd987-d670-4234-ab14-16126380d674)
+
+
+### Worst Setup Slack:Column3
+
+![Screenshot 2024-11-04 140119](https://github.com/user-attachments/assets/d18f83b3-7d74-4231-a012-7b9ca0871851)
+
+### Worst Hold Slack:Column4
+![Screenshot 2024-11-04 140920](https://github.com/user-attachments/assets/4af5fe16-1b84-4818-a17c-aaf9314be70d)
+
+
+
+
+
+</details>
