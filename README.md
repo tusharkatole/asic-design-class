@@ -2214,12 +2214,10 @@ reg2reg Hold report:
  <details>
   <summary>Click to open </summary>
 
-The STA checks are performed across all the corners to confirm the design meets the target timing requirements.
-
-The worst max path (Setup-critical) corners in the sub-40nm process nodes are usually: ss_LowTemp_LowVolt, ss_HighTemp_LowVolt (Slowest corners) The worst min path (Hold-critical) corners being: ff_LowTemp_HighVolt,ff_HighTemp_HighVolt (Fastest corners).
-
+The PVT corner refers to the combination of Process, Voltage, and Temperature variations that a semiconductor chip might encounter during its operation. These variations can affect the performance, power consumption, and reliability of the chip, so they are simulated to ensure the chip functions correctly under different conditions
 The below tcl script sta_pvt.tcl can be run to performt the STA across the PVT corners for which the sky130 lib files are available:
-Below are the contents of the constraint file that has to be put in sta file
+
+### The below tcl script sta_pvt.tcl can be run to performt the STA across the PVT corners for which the sky130 lib files are available:
 ```c
 set list_of_lib_files(1) "sky130_fd_sc_hd__ff_100C_1v65.lib"
 set list_of_lib_files(2) "sky130_fd_sc_hd__ff_100C_1v95.lib"
@@ -2281,6 +2279,7 @@ set_input_transition [expr $PERIOD * 0.08] [get_ports VREFH]
 
 Run below commands on terminal to source the sta_pvt.tcl file
 
+![Screenshot from 2024-11-03 14-34-21](https://github.com/user-attachments/assets/885a3b4e-692e-4565-8e12-f6e72ae0b772)
 
 
 A table comprising of the slacks report is shown below:
@@ -2303,9 +2302,10 @@ A table comprising of the slacks report is shown below:
 
 ### Colnclusion:
 
-1: Worst setup slack - sky130_fd_sc_hd__ss_n40C_1v28 PVT Corner library file
+From the above analysis we can conclude that
 
-2: Worst hold slack - sky130_fd_sc_hd__ff_n40C_1v95 PVT Corner library file
+1. sky130_fd_sc_hd__ss_n40C_1v28.lib Library file has the worst setup slack
+2. sky130_fd_sc_hd__ff_100C_1v95.lib Library file has the worst hold slack
 
 
 </details>
