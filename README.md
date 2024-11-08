@@ -2239,6 +2239,10 @@ set list_of_lib_files(16) "sky130_fd_sc_hd__tt_100C_1v80.lib"
 for {set i 1} {$i <= [array size list_of_lib_files]} {incr i} {
 read_liberty /home/tushar-katole/VSDBabySoC/src/timing_libs/$list_of_lib_files($i)
 read_verilog /home/tushar-katole/VSDBabySoC/src/module/vsdbabysoc.synth.v
+read_liberty -min /home/tushar-katole/VSDBabySoC/src/lib/avsdpll.lib
+read_liberty -max /home/tushar-katole/VSDBabySoC/src/lib/avsdpll.lib
+read_liberty -min /home/tushar-katole/VSDBabySoC/src/lib/avsddac.lib
+read_liberty -max /home/tushar-katole/VSDBabySoC/src/lib/avsddac.lib
 link_design rvmyth
 read_sdc /home/tushar-katole/VSDBabySoC/src/sdc/vsdbabysoc_synthesis.sdc
 check_setup -verbose
@@ -2263,17 +2267,48 @@ report_wns -digits {4} >> /home/tushar-katole/VSDBabySoC/src/sta_output/sta_wns.
 
 The SDC file used for generating clock and data constraints is given below:
 ```c
-create_clock -name CLK -period 10 [get_ports CLK]
-set_clock_uncertainty [expr 0.05 * 10] -setup [get_clocks CLK]
-set_clock_uncertainty [expr 0.08 * 10] -hold [get_clocks CLK]
-set_clock_transition [expr 0.05 * 10] [get_clocks CLK]
-set_input_transition [expr 0.08 * 10] [all_inputs]
 
-set_input_transition [expr $PERIOD * 0.08] [get_ports ENB_CP]
-set_input_transition [expr $PERIOD * 0.08] [get_ports ENB_VCO]
-set_input_transition [expr $PERIOD * 0.08] [get_ports REF]
-set_input_transition [expr $PERIOD * 0.08] [get_ports VCO_IN]
-set_input_transition [expr $PERIOD * 0.08] [get_ports VREFH]
+# Create clock with new period
+create_clock [get_pins pll/CLK] -name clk -period 10 -waveform {0 5.000}
+
+# Set loads
+set_load -pin_load 0.5 [get_ports OUT]
+set_load -min -pin_load 0.5 [get_ports OUT]
+
+# Set clock latency
+set_clock_latency 1 [get_clocks clk]
+set_clock_latency -source 2 [get_clocks clk]
+
+# Set clock uncertainty
+set_clock_uncertainty 0.5 [get_clocks clk]  ; # 5% of clock period for setup
+set_clock_uncertainty -hold 0.8 [get_clocks clk] ; # 8% of clock period for hold
+
+# Set maximum delay
+set_max_delay 10.05 -from [get_pins dac/OUT] -to [get_ports OUT]
+
+# Set input delay for VCO_IN
+set_input_delay -clock clk -max 4 [get_ports VCO_IN]
+set_input_delay -clock clk -min 1 [get_ports VCO_IN]
+
+# Set input delay for ENb_VCO
+set_input_delay -clock clk -max 4 [get_ports ENb_VCO]
+set_input_delay -clock clk -min 1 [get_ports ENb_VCO]
+
+# Set input delay for ENb_CP
+set_input_delay -clock clk -max 4 [get_ports ENb_CP]
+set_input_delay -clock clk -min 1 [get_ports ENb_CP]
+
+# Set input transition for VCO_IN
+set_input_transition -max 0.5 [get_ports VCO_IN] ; # 5% of clock
+set_input_transition -min 0.8 [get_ports VCO_IN] ; # adjust if needed
+
+# Set input transition for ENb_VCO
+set_input_transition -max 0.5 [get_ports ENb_VCO] ; # 5% of clock
+set_input_transition -min 0.8 [get_ports ENb_VCO] ; # adjust if needed
+
+# Set input transition for ENb_CP
+set_input_transition -max 0.5 [get_ports ENb_CP] ; # 5% of clock
+set_input_transition -min 0.8 [get_ports ENb_CP] ; # adjust if needed
 
 ```
 
@@ -2283,22 +2318,37 @@ Run below commands on terminal to source the sta_pvt.tcl file
 
 
 A table comprising of the slacks report is shown below:
-![Screenshot 2024-11-04 141717](https://github.com/user-attachments/assets/abdae209-6309-4505-a161-4ee578de35d8)
 
+| Library Name                             | TNS       | WNS       | Worst Max Slack | Worst Min Slack |
+|------------------------------------------|-----------|-----------|-----------------|-----------------|
+| sky130_fd_sc_hd__tt_025C_1v80.lib        | 0         | 0         | 0.4392          | -0.4904         |
+| sky130_fd_sc_hd__tt_100C_1v80.lib        | 0         | 0         | 0.5935          | -0.4855         |
+| sky130_fd_sc_hd__ff_100C_1v65.lib        | 0         | 0         | 2.5545          | -0.5509         |
+| sky130_fd_sc_hd__ff_100C_1v95.lib        | 0         | 0         | 4.0668          | -0.6040         |
+| sky130_fd_sc_hd__ff_n40C_1v56.lib        | 0         | 0         | 0.7781          | -0.5085         |
+| sky130_fd_sc_hd__ff_n40C_1v65.lib        | 0         | 0         | 1.9112          | -0.5449         |
+| sky130_fd_sc_hd__ff_n40C_1v76.lib        | 0         | 0         | 2.9301          | -0.5757         |
+| sky130_fd_sc_hd__ff_n40C_1v95.lib        | 0         | 0         | 4.0919          | -0.6125         |
+| sky130_fd_sc_hd__ss_100C_1v40.lib        | -3106.4377| -18.6216  | -18.6216        | 0.1053          |
+| sky130_fd_sc_hd__ss_100C_1v60.lib        | -1220.8483| -9.374    | -9.374          | -0.1580         |
+| sky130_fd_sc_hd__ss_n40C_1v28.lib        | -14832.0938| -64.0632 | -64.0632        | 1.0296          |
+| sky130_fd_sc_hd__ss_n40C_1v35.lib        | -8798.0049| -41.197   | -41.197         | 0.5475          |
+| sky130_fd_sc_hd__ss_n40C_1v40.lib        | -6195.0615| -31.1937  | -31.1937        | 0.3249          |
+| sky130_fd_sc_hd__ss_n40C_1v44.lib        | -4749.9995| -25.4079  | -25.4079        | 0.1909          |
+| sky130_fd_sc_hd__ss_n40C_1v60.lib        | -1730.8564| -12.109   | -12.109         | -0.1372         |
+| sky130_fd_sc_hd__ss_n40C_1v76.lib        | -630.0898 | -5.8819   | -5.8819         | -0.2962         |
 
+Notr:-Worst Max slack = Worst Setup slack
+      Worst Min slck = Worst hold slack
 
-### Total Negative Slack:Column1
-![Screenshot 2024-11-04 133020](https://github.com/user-attachments/assets/18b1de18-e641-4ab3-ba39-6ec7c5325a3f)
+      
+![TNS_plot](https://github.com/user-attachments/assets/694514d5-ca60-40c6-ac7d-9c6a4ff65fa4)
 
-### Worst (Negative slack)Setup Slack:Column2
-![Screenshot 2024-11-04 135521](https://github.com/user-attachments/assets/0b0fd987-d670-4234-ab14-16126380d674)
+![WNS_plot](https://github.com/user-attachments/assets/ff392763-25f5-4291-9ea4-ca83037f2b20)
 
+![Worst_Max_Slack_plot](https://github.com/user-attachments/assets/9b6f0356-e0b6-4ee6-bf04-ad23deead10c)
 
-### Worst Setup Slack:Column3
-![Screenshot 2024-11-04 140119](https://github.com/user-attachments/assets/d18f83b3-7d74-4231-a012-7b9ca0871851)
-
-### Worst Hold Slack:Column4
-![Screenshot 2024-11-04 140920](https://github.com/user-attachments/assets/4af5fe16-1b84-4818-a17c-aaf9314be70d)
+![Worst_Min_Slack_plot](https://github.com/user-attachments/assets/97260ad9-04a5-4e4c-ae13-9076cd502b26)
 
 ### Colnclusion:
 
