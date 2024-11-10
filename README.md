@@ -2359,3 +2359,72 @@ From the above analysis we can conclude that
 
 
 </details>
+
+
+
+## Lab12: Advanced Physical Design Using Openlane/Sky130 Wokshop
+ <details>
+  <summary>Day1 </summary>
+	 
+## Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
+
+
+
+
+  </details>
+
+  
+
+
+
+
+
+ <details>
+  <summary>Day2 </summary>
+
+  ## Good Floorpan vs Bad Floorplan and Introduction to Library Cell
+
+
+
+  </details>
+
+
+
+
+
+
+ <details>
+  <summary>Day3 </summary>
+
+  ## Design Library Cell Using Magic Layout and Cell characterization:
+
+
+
+  </details>
+
+
+
+
+
+
+
+ <details>
+  <summary>Day4 </summary>
+
+  ## Pre-Layout timing analysis and Importance of good clock tree:
+
+
+
+
+</details>
+
+
+
+ <details>
+  <summary>Day5 </summary>
+
+## Final steps for RTL2GDS using tritonRoute and openSTA:
+
+
+ 
+</details>
