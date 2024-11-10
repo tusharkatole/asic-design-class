@@ -2406,11 +2406,14 @@ exit
 Terminal Snapshots:
 
 
-![Screenshot 2024-11-11 001600](https://github.com/user-attachments/assets/5d5c020f-1b06-46d1-a883-9a94d75070f8)
+![Screenshot from 2024-11-11 00-14-39](https://github.com/user-attachments/assets/91e84336-62d9-49ef-87ae-ccd5bc509ca2)
 
-![Screenshot 2024-11-11 002348](https://github.com/user-attachments/assets/d8ecc361-4777-4e11-89b4-324eabe49708)
+![Screenshot from 2024-11-11 00-23-27](https://github.com/user-attachments/assets/1c3f8e0c-1311-4f12-a999-29e0d04a6520)
+
+
 
 Below snap shows the generated file on particular date 
+
 ![Screenshot 2024-11-11 004058](https://github.com/user-attachments/assets/b2e06c97-fc2d-476f-8e64-7832f57a7dce)
 
 ![Screenshot 2024-11-11 004810](https://github.com/user-attachments/assets/ef3cd85a-3638-49d4-bc63-04c87629b620)
