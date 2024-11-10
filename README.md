@@ -2367,9 +2367,76 @@ From the above analysis we can conclude that
   <summary>Day1 </summary>
 	 
 ## Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
+Tasks:
+
+### 1.Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
 
 
 
+Commands to invoke the OpenLANE flow and perform synthesis
+
+```
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+# Exit from OpenLANE flow
+exit
+
+# Exit from OpenLANE flow docker sub-system
+exit
+
+```
+
+Terminal Snapshots:
+
+
+![Screenshot 2024-11-11 001600](https://github.com/user-attachments/assets/5d5c020f-1b06-46d1-a883-9a94d75070f8)
+
+![Screenshot 2024-11-11 002348](https://github.com/user-attachments/assets/d8ecc361-4777-4e11-89b4-324eabe49708)
+
+Below snap shows the generated file on particular date 
+![Screenshot 2024-11-11 004058](https://github.com/user-attachments/assets/b2e06c97-fc2d-476f-8e64-7832f57a7dce)
+
+![Screenshot 2024-11-11 004810](https://github.com/user-attachments/assets/ef3cd85a-3638-49d4-bc63-04c87629b620)
+
+
+
+### 2. Calculate the flop ratio.
+
+![Screenshot 2024-11-11 004917](https://github.com/user-attachments/assets/9462f2e2-f5b1-4400-893a-b7a01154dc16)
+
+
+![Screenshot 2024-11-11 004941](https://github.com/user-attachments/assets/9b92f47c-d4cb-4d94-b966-c96d0b945efa)
+
+
+
+#### Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
+Flop Ratio = Number of D Flip-Flops/Total Number of Cells
+
+The percentage of Flop Ratio = Flop Ratio * 100
+
+```
+Flop Ratio = 1613/14876 = 0.108429685
+    
+Percentage of Flip Flops = 0.108429685 ∗ 100 = 10.84296854%
+```
 
   </details>
 
