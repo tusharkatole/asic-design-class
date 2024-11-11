@@ -2453,9 +2453,79 @@ Percentage of Flip Flops = 0.108429685 ∗ 100 = 10.84296854%
   <summary>Day2 </summary>
 
   ## Good Floorpan vs Bad Floorplan and Introduction to Library Cell
+  
+### Implementation
+1.Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
+2.Calculate the die area in microns from the values in floorplan def.
+3.Load generated floorplan def in magic tool and explore the floorplan.
+4.Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+5.Load generated placement def in magic tool and explore the placement. Area of Die in microns = Die width in microns ∗ Die height in microns
+
+## 1. Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs
+
+Commands to invoke the OpenLANE flow and perform floorplan
+```
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+# Now we can run floorplan
+run_floorplan
+```
+
+Snapshots:
+![Screenshot 2024-11-11 224246](https://github.com/user-attachments/assets/215ce76f-3587-40fd-b1ee-383df09c2508)
+
+![Screenshot 2024-11-11 224453](https://github.com/user-attachments/assets/5e6382a0-4c51-4abf-8144-3863e53945db)
+
+floorplan complete
+![Screenshot 2024-11-11 224548](https://github.com/user-attachments/assets/589e572e-fa58-4b9a-8545-5ad13925bbc6)
 
 
 
+## 2. Calculate the die area in microns from the values in floorplan def.
+
+![Screenshot 2024-11-11 225119](https://github.com/user-attachments/assets/bf8ab0e0-5db0-4de4-8d57-8e16d0f8b003)
+
+![Screenshot 2024-11-11 225406](https://github.com/user-attachments/assets/1b423c03-7b23-49dd-9299-80c785ed8adf)
+
+![Screenshot 2024-11-11 225611](https://github.com/user-attachments/assets/68b4357f-2c51-4188-891e-d26599a5a40a)
+
+According to floorplan def 1000 Unit Distance = 1 micron Die
+Die width in unit distance = 660685 − 0 = 660685
+Die height in unit distance = 671405 − 0 = 671405
+Distance in microns = Value in unit distance / 1000 
+Die width in microns = 660685/1000 = 660.685 microns 
+Dieheight in microns = 671405/1000 = 671.405 microns 
+Area of die in microns = 660.685 ∗ 671.405 = 443587.212425 square microns
+
+## 3. Load generated floorplan def in magic tool and explore the floorplan.
+
+Commands to load floorplan def in magic in another terminal
+```
+# Change directory to path containing generated floorplan def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/floorplan/
+
+# Command to load the floorplan def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+
+
+Screenshots:
   </details>
 
 
