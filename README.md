@@ -2534,20 +2534,29 @@ Snapshot:
 
 
 Equidistant placement of ports: 
+![Screenshot from 2024-11-12 00-18-35](https://github.com/user-attachments/assets/df9abda4-8020-419c-ab70-099117ceb01e)
 
 
 Port layer as set through config.tcl 
+![Screenshot from 2024-11-12 00-26-04](https://github.com/user-attachments/assets/2d0817d7-f9c8-4af1-a438-2773fe70ee0f)
+![Screenshot from 2024-11-12 00-29-10](https://github.com/user-attachments/assets/fbddcc40-e273-4d6a-9638-9251b8d8101b)
 
 
 
 Decap Cells and Tap Cells
+![Screenshot from 2024-11-12 00-34-03](https://github.com/user-attachments/assets/0e25bee0-b587-4ea9-bd55-c4dfc0ab3a72)
 
 
 Diogonally equidistant Tap cells
+![Screenshot from 2024-11-12 00-39-32](https://github.com/user-attachments/assets/5223d5d2-2713-48b1-957d-98808d7301df)
 
 
 
 Unplaced standard cells at the origin
+![Screenshot from 2024-11-12 00-40-48](https://github.com/user-attachments/assets/c3b9e9e0-2e20-4359-b403-aafc5d6be06e)
+
+
+
 
 ## 4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs. Command to run placement
 
