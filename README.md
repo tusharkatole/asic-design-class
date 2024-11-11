@@ -2564,7 +2564,44 @@ Unplaced standard cells at the origin
 # Congestion aware placement by default
 run_placement
 ```
+![Screenshot from 2024-11-12 01-10-46](https://github.com/user-attachments/assets/f6950154-e31f-4166-9c6a-5f21f96f16f9)
 
+![Screenshot from 2024-11-12 01-11-54](https://github.com/user-attachments/assets/2b6021b3-2ae3-469e-8209-f6f4e5d4dfa8)
+
+
+
+
+
+5. Load generated placement def in magic tool and explore the placement. Commands to load placement def in magic in another terminal
+
+   
+```
+# Change directory to path containing generated placement def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+
+![Screenshot from 2024-11-12 01-18-34](https://github.com/user-attachments/assets/0e04adda-bff1-40fa-9955-575da9261751)
+
+![Screenshot from 2024-11-12 01-19-36](https://github.com/user-attachments/assets/9b3bec25-be46-4ce9-852c-6f20393e4960)
+
+
+Standard cells legally placed 
+![Screenshot from 2024-11-12 01-23-40](https://github.com/user-attachments/assets/2393d0ca-16b9-4369-9db4-fd02cff38515)
+
+
+Commands to exit from current run
+
+```
+# Exit from OpenLANE flow
+exit
+
+# Exit from OpenLANE flow docker sub-system
+exit
+```
 
 
   </details>
