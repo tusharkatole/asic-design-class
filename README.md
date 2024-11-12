@@ -2457,8 +2457,11 @@ Percentage of Flip Flops = 0.108429685 ∗ 100 = 10.84296854%
 ### Implementation
 1.Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
 2.Calculate the die area in microns from the values in floorplan def.
+
 3.Load generated floorplan def in magic tool and explore the floorplan.
+
 4.Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+
 5.Load generated placement def in magic tool and explore the placement. Area of Die in microns = Die width in microns ∗ Die height in microns
 
 ## 1. Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs
@@ -2488,11 +2491,13 @@ run_floorplan
 ```
 
 Snapshots:
+
 ![Screenshot 2024-11-11 224246](https://github.com/user-attachments/assets/215ce76f-3587-40fd-b1ee-383df09c2508)
 
 ![Screenshot 2024-11-11 224453](https://github.com/user-attachments/assets/5e6382a0-4c51-4abf-8144-3863e53945db)
 
 floorplan complete
+
 ![Screenshot 2024-11-11 224548](https://github.com/user-attachments/assets/589e572e-fa58-4b9a-8545-5ad13925bbc6)
 
 
