@@ -2620,6 +2620,166 @@ exit
   <summary>Day3 </summary>
 
   ## Design Library Cell Using Magic Layout and Cell characterization:
+Tasks:
+
+1.Clone custom inverter standard cell design from github repository: Standard cell design and characterization using OpenLANE flow.
+2.Load the custom inverter layout in magic and explore.
+3.Spice extraction of inverter in magic.
+4.Editing the spice model file for analysis through simulation.
+5.Post-layout ngspice simulations.
+6.Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+1. Clone custom inverter standard cell design from github repository
+```
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+![Screenshot from 2024-11-13 11-17-03](https://github.com/user-attachments/assets/6e80ba5c-c36c-4fbb-898b-3a531700c029)
+
+
+2.Load the custom inverter layout in magic and explore.
+
+Screenshot of custom inverter layout in magic
+![Screenshot from 2024-11-13 11-22-25](https://github.com/user-attachments/assets/22950357-803d-4798-8af8-b7d45fb75603)
+
+
+PMOS identified
+![Screenshot from 2024-11-13 11-24-02](https://github.com/user-attachments/assets/2293c389-058d-44a6-9c15-3c6406564921)
+
+
+NMOS identified
+![Screenshot from 2024-11-13 11-24-36](https://github.com/user-attachments/assets/527ebab9-e84e-41bd-a375-aad4caea3dba)
+
+
+Output Y connectivity to PMOS and NMOS drain verified 
+![Screenshot from 2024-11-13 11-26-22](https://github.com/user-attachments/assets/929f5db4-e7c6-4b50-8e1f-5bc69371695b)
+
+
+
+PMOS source connectivity to VDD (here VPWR) verified
+![Screenshot from 2024-11-13 11-32-03](https://github.com/user-attachments/assets/c11f9320-89a1-4638-bc5b-2733ebdec311)
+
+
+NMOS source connectivity to VSS (here VGND) verified
+![Screenshot from 2024-11-13 11-32-30](https://github.com/user-attachments/assets/9cbfc0fd-1379-4680-96ba-65b4a5c1ea96)
+
+
+Deleting necessary layout part to see DRC error
+![Screenshot from 2024-11-13 12-02-59](https://github.com/user-attachments/assets/9abbc77b-e3e4-439d-8d1d-5d068a97106e)
+
+
+3.Spice extraction of inverter in magic.
+
+Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+```
+# Check current directory
+pwd
+
+# Extraction command to extract to .ext format
+extract all
+
+# Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+# Converting to ext to spice
+ext2spice
+```
+
+Screenshot of tkcon window after running above commands
+![Screenshot from 2024-11-13 12-23-12](https://github.com/user-attachments/assets/7af6d521-a485-446c-9831-43e1027178a7)
+
+
+Screenshot of created spice file and its content in next screenshot
+![Screenshot from 2024-11-13 12-24-58](https://github.com/user-attachments/assets/8377c860-18b0-439d-bb52-d6c3ba56d5b1)
+
+![Screenshot from 2024-11-13 12-26-12](https://github.com/user-attachments/assets/7664e435-f332-48ae-8f16-838adc1f6548)
+
+
+4.Editing the spice model file for analysis through simulation.
+
+Measuring unit distance in layout grid
+![Screenshot from 2024-11-13 12-39-15](https://github.com/user-attachments/assets/22ec0108-b9c6-451e-9a06-8e611b238ef8)
+
+
+Final edited spice file ready for ngspice simulation
+![Screenshot from 2024-11-13 12-56-27](https://github.com/user-attachments/assets/134f6554-6023-46cd-9c73-e15448ddcd60)
+
+
+
+5.Post-layout ngspice simulations.
+
+Commands for ngspice simulation
+```
+# Command to directly load spice file for simulation to ngspice
+ngspice sky130_inv.spice
+
+# Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+plot y vs time a
+```
+
+Screenshots of ngspice run
+![Screenshot from 2024-11-13 12-58-31](https://github.com/user-attachments/assets/2d172ab3-ce44-400f-ba3d-38e0544c9909)
+![Screenshot from 2024-11-13 12-58-34](https://github.com/user-attachments/assets/c0a1f26a-813b-4e4c-82f0-c15e0fbd2f38)
+![Screenshot from 2024-11-13 13-00-26](https://github.com/user-attachments/assets/2ffeb63c-d20e-4ce1-a619-185364aa00fb)
+
+
+Screenshot of generated plot 
+![Screenshot from 2024-11-13 12-59-37](https://github.com/user-attachments/assets/2ae82950-601f-4914-a09e-2f9586d4b
+
+* Rise transition time calculation Rise Transition Time = Time taken for output to rise to 80% − Time taken for output to rise to 20%
+* 20% of output (3.3V) = 0.66V 80% of output (3.3V) = 2.64V
+
+20% Screenshots
+![Screenshot from 2024-11-13 14-53-45](https://github.com/user-attachments/assets/2c7e302e-8805-4a18-866a-f1a015b85e3c)
+
+80% Screenshot 
+![Screenshot from 2024-11-13 14-54-51](https://github.com/user-attachments/assets/af104a20-1fd3-4d79-a198-a6f139975682)
+
+
+### Rise Transition Time = 2.2393 - 2.1799 = 0.0594 ns = 59.40 ps
+
+* Fall Transition Time = Time taken for output to fall to 80% − Time taken for output to fall to 20% 
+* 20% of output (3.3V) = 0.66V 20% of output (3.3V) = 2.64V
+
+20% Screenshots
+![Screenshot from 2024-11-13 14-59-19](https://github.com/user-attachments/assets/01da40be-7097-4fd2-ab50-9f8f69b2646d)
+
+
+80% Screenshot 
+![Screenshot from 2024-11-13 15-01-43](https://github.com/user-attachments/assets/b8565c75-ae8a-4bb2-ad36-40289e9cdffe)
+
+### Fall Transition Time = 4.09345 - 4.05088 = 0.04257 ns = 42.57 ps
+
+* Rise Cell Delay Calculation Rise cell delay = Time taken by output to rise to 50% − Time taken by input to fall to 50% 
+* 50 % of 3.3V = 1.65V
+
+50% Screenshots
+![Screenshot from 2024-11-13 15-08-06](https://github.com/user-attachments/assets/35117eb5-cf1f-4593-8d82-3e61b47b8907)
+
+### Rise cell delay = 2.2075 - 2.1489 = 0.0586 ns = 58.60 ps
+
+* Fall Cell Delay Calculation Fall cell delay = Time taken by output to fall to 50% − Time taken by input to rise to 50% 
+* 50 % of 3.3V = 1.65V
+
+50% Screenshots
+![Screenshot from 2024-11-13 15-15-50](https://github.com/user-attachments/assets/a123686f-3d57-4a90-9839-4d946422cbde)
+
+### Fall cell delay = 4.0765−4.05 = 0.0265 ns = 26.50 ps
 
 
 
