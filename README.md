@@ -2903,6 +2903,61 @@ Screenshot of magic window with rule implemented showing no errors found
   <summary>Day4 </summary>
 
   ## Pre-Layout timing analysis and Importance of good clock tree:
+## Final steps for RTL2GDS using tritonRoute and openSTA:
+1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+
+Conditions to be verified before moving forward with custom designed cell layout:
+
+    Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+    Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch.
+    Condition 3: Height of the standard cell should be even multiples of the vertical track pitch.
+
+Commands to open the custom inverter layout
+```
+# Change directory to vsdstdcelldesign
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+Screenshot of tracks.info of sky130_fd_sc_hd
+![Screenshot from 2024-11-13 19-07-41](https://github.com/user-attachments/assets/5b624a55-1a8d-414c-b78f-3830e6ba36f6)
+
+Commands for tkcon window to set grid as tracks of locali layer
+```
+# Get syntax for grid command
+help grid
+
+# Set grid values accordingly
+grid 0.46um 0.34um 0.23um 0.17um
+```
+Screenshot of commands run
+![Screenshot from 2024-11-13 19-12-45](https://github.com/user-attachments/assets/aaaa6449-2bf3-4dc3-b226-3f123a91f527)
+
+Condition 1 verified
+![Screenshot from 2024-11-13 19-12-03](https://github.com/user-attachments/assets/39f519a6-2d1f-49d8-827b-34f0076f880b)
+
+
+
+
+Condition 2 verified
+ H o r i z o n t a l   t r a c k   p i t c h = 0.46   u m 
+ 
+![Screenshot from 2024-11-13 19-04-10](https://github.com/user-attachments/assets/a0bdba9f-1229-4940-9740-62b5442f5884)
+ W i d t h   o f   s t a n d a r d   c e l l = 1.38   u m = 0.46 ∗ 3 
+
+
+
+ 
+
+
+
+Condition 3 verified
+ V e r t i c a l   t r a c k   p i t c h = 0.34   u m 
+ ![Screenshot from 2024-11-13 19-19-52](https://github.com/user-attachments/assets/7751fe42-5bd2-43ea-af55-9be018dec508)
+
+  H e i g h t   o f   s t a n d a r d   c e l l = 2.72   u m = 0.34 ∗ 8 
 
 
 
@@ -2914,8 +2969,11 @@ Screenshot of magic window with rule implemented showing no errors found
  <details>
   <summary>Day5 </summary>
 
-## Final steps for RTL2GDS using tritonRoute and openSTA:
 
+  
 
  
+
+
+
 </details>
