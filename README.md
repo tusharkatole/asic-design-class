@@ -2739,7 +2739,6 @@ Screenshots of ngspice run
 
 
 Screenshot of generated plot
-
 ![Screenshot from 2024-11-13 12-59-37](https://github.com/user-attachments/assets/2ae82950-601f-4914-a09e-2f9586d4b
 
 * Rise transition time calculation Rise Transition Time = Time taken for output to rise to 80% − Time taken for output to rise to 20%
