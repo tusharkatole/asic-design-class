@@ -2647,15 +2647,18 @@ cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/
 ls
 
 # Command to open custom inverter layout in magic
-magic -T sky130A.tech sky130_inv.mag &
+magic -T sky130A.tech sky130_tusinv.mag &
 ```
-![Screenshot from 2024-11-13 11-17-03](https://github.com/user-attachments/assets/6e80ba5c-c36c-4fbb-898b-3a531700c029)
+![Screenshot from 2024-11-14 11-53-26](https://github.com/user-attachments/assets/3cae3f6d-40e9-4e3f-aab4-5e77b345805e)
+
 
 
 2.Load the custom inverter layout in magic and explore.
 
 Screenshot of custom inverter layout in magic
-![Screenshot from 2024-11-13 11-22-25](https://github.com/user-attachments/assets/22950357-803d-4798-8af8-b7d45fb75603)
+![Screenshot from 2024-11-14 11-59-16](https://github.com/user-attachments/assets/cd4905d9-f4d3-4789-9d72-cb30f715fbd8)
+
+
 
 
 PMOS identified
@@ -2667,16 +2670,19 @@ NMOS identified
 
 
 Output Y connectivity to PMOS and NMOS drain verified 
-![Screenshot from 2024-11-13 11-26-22](https://github.com/user-attachments/assets/929f5db4-e7c6-4b50-8e1f-5bc69371695b)
+![Screenshot from 2024-11-14 12-12-08](https://github.com/user-attachments/assets/f841e4c5-e036-4cb5-b93c-9d700b9510e0)
+
 
 
 
 PMOS source connectivity to VDD (here VPWR) verified
-![Screenshot from 2024-11-13 11-32-03](https://github.com/user-attachments/assets/c11f9320-89a1-4638-bc5b-2733ebdec311)
+![Screenshot from 2024-11-14 12-12-38](https://github.com/user-attachments/assets/0c816b35-5eaf-4c50-bfb6-241c9e3f9e1d)
+
 
 
 NMOS source connectivity to VSS (here VGND) verified
-![Screenshot from 2024-11-13 11-32-30](https://github.com/user-attachments/assets/9cbfc0fd-1379-4680-96ba-65b4a5c1ea96)
+![Screenshot from 2024-11-14 12-14-05](https://github.com/user-attachments/assets/d21e6f7f-1c00-4f85-b7be-5b9da23dca82)
+
 
 
 Deleting necessary layout part to see DRC error
