@@ -2701,13 +2701,15 @@ ext2spice
 ```
 
 Screenshot of tkcon window after running above commands
-![Screenshot from 2024-11-13 12-23-12](https://github.com/user-attachments/assets/7af6d521-a485-446c-9831-43e1027178a7)
 
+![Screenshot 2024-11-14 121824](https://github.com/user-attachments/assets/3b49db8d-7687-4200-ba44-fdabe45b1079)
 
 Screenshot of created spice file and its content in next screenshot
-![Screenshot from 2024-11-13 12-24-58](https://github.com/user-attachments/assets/8377c860-18b0-439d-bb52-d6c3ba56d5b1)
 
-![Screenshot from 2024-11-13 12-26-12](https://github.com/user-attachments/assets/7664e435-f332-48ae-8f16-838adc1f6548)
+![Screenshot 2024-11-14 122230](https://github.com/user-attachments/assets/b04910ba-96d5-4df4-84cf-35f65f2aa457)
+
+
+![Screenshot 2024-11-14 122353](https://github.com/user-attachments/assets/9a68683b-0d16-4ff1-b618-f860923ec7fb)
 
 
 4.Editing the spice model file for analysis through simulation.
@@ -2717,9 +2719,8 @@ Measuring unit distance in layout grid
 
 
 Final edited spice file ready for ngspice simulation
-![Screenshot from 2024-11-13 12-56-27](https://github.com/user-attachments/assets/134f6554-6023-46cd-9c73-e15448ddcd60)
 
-
+![Screenshot 2024-11-14 123701](https://github.com/user-attachments/assets/399c4f5f-b084-486a-b2d8-7dc2d31fe942)
 
 5.Post-layout ngspice simulations.
 
@@ -2733,9 +2734,10 @@ plot y vs time a
 ```
 
 Screenshots of ngspice run
-![Screenshot from 2024-11-13 12-58-31](https://github.com/user-attachments/assets/2d172ab3-ce44-400f-ba3d-38e0544c9909)
-![Screenshot from 2024-11-13 12-58-34](https://github.com/user-attachments/assets/c0a1f26a-813b-4e4c-82f0-c15e0fbd2f38)
-![Screenshot from 2024-11-13 13-00-26](https://github.com/user-attachments/assets/2ffeb63c-d20e-4ce1-a619-185364aa00fb)
+
+![Screenshot 2024-11-14 123816](https://github.com/user-attachments/assets/a4d43b00-27b0-4266-97eb-73f0ba92ceeb)
+
+![Screenshot 2024-11-14 123921](https://github.com/user-attachments/assets/467d950c-32c4-4ff2-9c73-4547b136811e)
 
 
 Screenshot of generated plot
