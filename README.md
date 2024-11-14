@@ -2365,7 +2365,93 @@ From the above analysis we can conclude that
 ## Lab12: Advanced Physical Design Using Openlane/Sky130 Wokshop
  <details>
   <summary>Day1 </summary>
-	 
+
+#### Package
+In embedded boards, the "chip" we see is actually the package, which serves as a protective layer for the actual manufactured chip located at its center. Connections from the package to the chip are made via wire bonding, a basic wired connection method.
+
+#### Chip
+Inside the chip, signals from external sources are routed through pads. The area bound by these pads is the core, where all digital logic resides. Together, the core and pads form the die, which is the primary manufacturing unit in semiconductor production.
+
+#### Foundry
+A foundry manufactures semiconductor chips, and Foundry IPs are intellectual properties specific to each foundry, often requiring high-level expertise. Reusable logic blocks are known as macros
+
+
+#### Instruction Set Architecture (ISA)
+For a program written in C to run on hardware, a specific flow is followed:
+
+* The C program is first compiled into assembly language (e.g., RISC-V ISA).
+* This assembly code is converted into machine language, which is then read by the computer hardware.
+* The machine language is implemented using an RTL (Hardware Description Language).
+* Finally, the design progresses through a standard RTL to GDSII flow.
+
+#### System Software Layers
+For applications to run on hardware, system software layers (such as OS, compiler, and assembler) convert high-level code into binary language.
+
+Example Flow: Stopwatch App on RISC-V Core
+For instance, in a stopwatch app:
+* The OS layer might output a C function, which the compiler then converts into RISC-V instructions.
+* The assembler then translates these instructions into machine language, which the chip layout understands.
+
+#### RTL to Physical Design
+After the assembler generates machine language, RTL (in HDL) implements specific instructions, synthesizing them into a netlist of gates for chip fabrication.
+
+### Open-Source Implementation of ASIC Design
+Open-source ASIC Design requires:
+
+* RTL Designs
+* EDA Tools
+* PDK Data
+* 
+Evolution of ASIC Design:
+
+In 1979, Lynn Conway and Carver Mead proposed decoupling IC design from fabrication, leading to the concept of Fabless Companies. This shift allowed designers and pure-play fabs to work independently, interfacing through Process Design Kits (PDKs), which contain data models, technology information, and design rules.
+
+Open-source PDK: Google and Skywater opened up the Skywater 130nm PDK in June 2020, marking a milestone in public accessibility for ASIC design.
+
+### OpenLane: An Open-source ASIC Design Flow
+The OpenLane ASIC Design Flow aims to transform the design from RTL (Register Transfer Level) to GDSII, the final layout format for fabrication.
+
+### Key Stages in ASIC Flow
+#### Synthesis
+The RTL is synthesized into a circuit using Standard Cell Libraries (SCL), resulting in a Gate-Level Netlist that is functionally equivalent to the RTL.
+
+#### Standard Cell Libraries
+Standard cells, as fundamental building blocks, have regular layouts and various views (e.g., GDSII, Liberty, SPICE/CDL).
+
+#### Floor Planning
+Defines the chip's overall structure and includes core and I/O placement
+
+#### Power Planning
+Typically uses upper metal layers for power distribution due to their lower resistance, helping to minimize IR drops.
+
+#### Placement
+* Global Placement: Provides approximate cell locations based on connectivity.
+* Detailed Placement: Adjusts positions to ensure legal, non-overlapping cell locations.
+
+#### Clock Tree Synthesis
+Addresses clock skew to ensure synchronous operation across all components.
+
+
+#### Routing
+OpenLane uses 6 routing layers in Skywater PDK, with the lowest being Titanium Nitride and the remaining five being aluminum.
+
+### Final Layout & Sign-Off Checks
+Once routing is complete, the layout undergoes multiple checks:
+
+* DRC (Design Rule Checking) ensures layout adherence to fabrication rules.
+* LVS (Layout vs. Schematic) verifies the final layout's functionality against the original netlist.
+* STA (Static Timing Analysis) confirms the design meets its timing requirements.
+
+
+# Synthesizing the 'picorv32a' Design in OpenLANE
+
+
+
+
+
+
+
+  
 ## Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
 Tasks:
 
@@ -3364,7 +3450,7 @@ Result - slack reduced
 
 OR gate of drive strength 2 driving OA gate has more delay
 
-Screenshot from 2024-03-26 10-32-27
+Screenshot:
 
 ![Screenshot from 2024-11-14 00-13-44](https://github.com/user-attachments/assets/7eb26c49-afa4-4831-9bac-dc54cbe20bf1)
 
