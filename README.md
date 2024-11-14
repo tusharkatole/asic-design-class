@@ -2939,7 +2939,7 @@ Commands to open the custom inverter layout
 cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 
 # Command to open custom inverter layout in magic
-magic -T sky130A.tech sky130_inv.mag &
+magic -T sky130A.tech sky130_tusinv.mag &
 ```
 
 Screenshot of tracks.info of sky130_fd_sc_hd
@@ -2993,7 +2993,7 @@ Condition 3 verified
 Command for tkcon window to save the layout with custom name
 ```
 # Command to save as
-save sky130_vsdinv.mag
+save sky130_tusinv.mag
 
 Command to open the newly saved layout
 
