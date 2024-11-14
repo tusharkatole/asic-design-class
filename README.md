@@ -3194,10 +3194,9 @@ Screenshot of placement def in magic
 
 
 Screenshot of custom inverter inserted in placement def with proper abutment
-![Screenshot from 2024-11-13 22-39-12](https://github.com/user-attachments/assets/f0908cf4-dbed-4e4c-b71b-b6e0bfc7744e)
+![git1](https://github.com/user-attachments/assets/9927f215-70bb-4150-85c7-715fae6e9ea4)
 
-
-![Screenshot from 2024-11-13 22-37-31](https://github.com/user-attachments/assets/fac5abd8-f737-4d0f-8c4b-12b720ace959)
+![git2](https://github.com/user-attachments/assets/b7da1589-7626-4d2b-8d47-07afd5bb4355)
 
 
 9. Do Post-Synthesis timing analysis with OpenSTA tool.
