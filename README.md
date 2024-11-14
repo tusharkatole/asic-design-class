@@ -2726,7 +2726,7 @@ Final edited spice file ready for ngspice simulation
 Commands for ngspice simulation
 ```
 # Command to directly load spice file for simulation to ngspice
-ngspice sky130_inv.spice
+ngspice sky130_tusinv.spice
 
 # Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
 plot y vs time a
@@ -2739,47 +2739,60 @@ Screenshots of ngspice run
 
 
 Screenshot of generated plot
-![Screenshot from 2024-11-13 12-59-37](https://github.com/user-attachments/assets/2ae82950-601f-4914-a09e-2f9586d4b
+
+![Screenshot 2024-11-14 124956](https://github.com/user-attachments/assets/a840dda8-9979-4c56-9bf8-1ca733c56659)
 
 * Rise transition time calculation Rise Transition Time = Time taken for output to rise to 80% − Time taken for output to rise to 20%
 * 20% of output (3.3V) = 0.66V 80% of output (3.3V) = 2.64V
 
+
 20% Screenshots
-![Screenshot from 2024-11-13 14-53-45](https://github.com/user-attachments/assets/2c7e302e-8805-4a18-866a-f1a015b85e3c)
+
+![Screenshot 2024-11-14 125326](https://github.com/user-attachments/assets/9ee22c2c-5323-420b-b050-4d23557b4811)
 
 80% Screenshot 
-![Screenshot from 2024-11-13 14-54-51](https://github.com/user-attachments/assets/af104a20-1fd3-4d79-a198-a6f139975682)
+
+![Screenshot 2024-11-14 125504](https://github.com/user-attachments/assets/545cc2e3-ca30-4541-9c9a-92c2fcf78817)
 
 
-### Rise Transition Time = 2.2393 - 2.1799 = 0.0594 ns = 59.40 ps
+### Rise Transition Time = 2.248 - 2.18206 = 0.06594 ns = 65.94 ps
 
 * Fall Transition Time = Time taken for output to fall to 80% − Time taken for output to fall to 20% 
 * 20% of output (3.3V) = 0.66V 20% of output (3.3V) = 2.64V
 
 20% Screenshots
-![Screenshot from 2024-11-13 14-59-19](https://github.com/user-attachments/assets/01da40be-7097-4fd2-ab50-9f8f69b2646d)
 
+![Screenshot 2024-11-14 125727](https://github.com/user-attachments/assets/22668895-5d6a-4daf-8e6c-1230f811d1af)
 
 80% Screenshot 
-![Screenshot from 2024-11-13 15-01-43](https://github.com/user-attachments/assets/b8565c75-ae8a-4bb2-ad36-40289e9cdffe)
 
-### Fall Transition Time = 4.09345 - 4.05088 = 0.04257 ns = 42.57 ps
+![Screenshot 2024-11-14 125855](https://github.com/user-attachments/assets/cd4247e1-429a-4d4a-bdfa-b1261dca90fa)
+
+
+### Fall Transition Time = 4.094 - 4.054 = 0.04 ns = 40 ps
 
 * Rise Cell Delay Calculation Rise cell delay = Time taken by output to rise to 50% − Time taken by input to fall to 50% 
 * 50 % of 3.3V = 1.65V
 
 50% Screenshots
-![Screenshot from 2024-11-13 15-08-06](https://github.com/user-attachments/assets/35117eb5-cf1f-4593-8d82-3e61b47b8907)
 
-### Rise cell delay = 2.2075 - 2.1489 = 0.0586 ns = 58.60 ps
+
+![Screenshot 2024-11-14 130020](https://github.com/user-attachments/assets/e98276ea-ef15-4afb-a905-dd915df6c96e)
+
+
+![Screenshot 2024-11-14 130144](https://github.com/user-attachments/assets/b03a6a14-3fe1-481b-9191-75cb934638e8)
+
+### Rise cell delay = 2.21 - 2.1489 = 0.0611 ns = 61.1 ps
 
 * Fall Cell Delay Calculation Fall cell delay = Time taken by output to fall to 50% − Time taken by input to rise to 50% 
 * 50 % of 3.3V = 1.65V
 
 50% Screenshots
-![Screenshot from 2024-11-13 15-15-50](https://github.com/user-attachments/assets/a123686f-3d57-4a90-9839-4d946422cbde)
 
-### Fall cell delay = 4.0765−4.05 = 0.0265 ns = 26.50 ps
+
+![Screenshot 2024-11-14 130307](https://github.com/user-attachments/assets/faa49019-1388-4edd-9d6c-6cdc309ac372)
+
+### Fall cell delay = 4.0727−4.05 = 0.0227 ns = 22.7 ps
 
 6.Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
 
