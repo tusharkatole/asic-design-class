@@ -2957,7 +2957,10 @@ Screenshot of commands run
 ![Screenshot from 2024-11-13 19-12-45](https://github.com/user-attachments/assets/aaaa6449-2bf3-4dc3-b226-3f123a91f527)
 
 Condition 1 verified
-![Screenshot from 2024-11-13 19-12-03](https://github.com/user-attachments/assets/39f519a6-2d1f-49d8-827b-34f0076f880b)
+
+
+
+![Screenshot 2024-11-14 193117](https://github.com/user-attachments/assets/7c2bb096-e0f3-4ee7-8b07-093b71e55b74)
 
 
 
@@ -2965,8 +2968,9 @@ Condition 1 verified
 Condition 2 verified
  Horizontal track pitch=0.46 u m 
  
-![Screenshot from 2024-11-13 19-04-10](https://github.com/user-attachments/assets/a0bdba9f-1229-4940-9740-62b5442f5884)
- Widh  of standard   cell=1.38 um = 0.46 ∗ 3 
+![Screenshot 2024-11-14 193549](https://github.com/user-attachments/assets/2e6c7c4b-a61b-4fc6-906a-d7b14004b11b)
+
+ Widh  of standard   cell=1.39 um = 0.463 ∗ 3 
 
  
 
@@ -2979,7 +2983,8 @@ Condition 2 verified
 Condition 3 verified
 
  Vertical   track   pitch = 0.34 u m 
- ![Screenshot from 2024-11-13 19-19-52](https://github.com/user-attachments/assets/7751fe42-5bd2-43ea-af55-9be018dec508)
+
+![Screenshot 2024-11-14 193742](https://github.com/user-attachments/assets/b3c5c3c5-9fe3-4b45-8af9-f185f1bd4379)
 
   Height   of   standard   cell = 2.72 um = 0.34 ∗ 8 
 
@@ -2997,7 +3002,9 @@ magic -T sky130A.tech sky130_tusinv.mag &
 ```
 
 Screenshot of newly saved layout
-![Screenshot from 2024-11-13 19-32-43](https://github.com/user-attachments/assets/df94e90d-cb64-4d31-91f7-5f0d9aa5d589)
+
+![Screenshot 2024-11-14 194035](https://github.com/user-attachments/assets/e630d10b-8692-47d7-a77f-244a35bcc780)
+
 
 3. Generate lef from the layout.
 
