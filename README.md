@@ -3974,9 +3974,7 @@ Initial Steps:
 * Now copy the constraints file(vsdbabysoc_synthesis.sdc) from the VSDBabySoC folder in your system into this directory.
 * Now copy the files(macro.cfg and pin_order.cfg) from the VSDBabySoC folder in your system into this directory.
 
-Makefile
-
-
+#### Makefile
 ![Screenshot 2024-11-26 020544](https://github.com/user-attachments/assets/b8a571f0-8eda-47e8-90c7-1c2c629dd5c0)
 
 
@@ -4003,7 +4001,7 @@ Makefile
 ![Screenshot 2024-11-26 021001](https://github.com/user-attachments/assets/960763f6-2754-477c-b108-8737012b8ff7)
 
 
-config.mk file
+#### config.mk file
 ![Screenshot 2024-11-26 021114](https://github.com/user-attachments/assets/af84bdaf-d3c1-4051-bfda-6c8de351192d)
 
 ```c
@@ -4096,6 +4094,7 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 
 ![Screenshot 2024-11-25 153509](https://github.com/user-attachments/assets/4e011b0e-d5e3-4c9d-850d-27949b7248cc)
 
+
 Synthesis netlist:
 ![Screenshot 2024-11-25 154051](https://github.com/user-attachments/assets/8d0a2846-633f-46ed-a2b5-e699a4d5c31f)
 
@@ -4126,6 +4125,107 @@ Synthesis Stats:
 
 
 ![Screenshot 2024-11-25 155233](https://github.com/user-attachments/assets/58087316-be9d-4cfd-83f3-6ff919316aee)
+
+
+#### Synthesis Report:
+
+```c
+
+==========================================================================
+floorplan final report_tns
+--------------------------------------------------------------------------
+tns 0.00
+
+==========================================================================
+floorplan final report_wns
+--------------------------------------------------------------------------
+wns 0.00
+
+==========================================================================
+floorplan final report_worst_slack
+--------------------------------------------------------------------------
+worst slack INF
+
+==========================================================================
+floorplan final report_checks -path_delay min
+--------------------------------------------------------------------------
+No paths found.
+
+==========================================================================
+floorplan final report_checks -path_delay max
+--------------------------------------------------------------------------
+No paths found.
+
+==========================================================================
+floorplan final report_checks -unconstrained
+--------------------------------------------------------------------------
+Startpoint: core/CPU_imm_a3[30]$_DFF_P_ (rising edge-triggered flip-flop)
+Endpoint: core/CPU_Xreg_value_a4[11][20]$_SDFFE_PP0P_
+          (rising edge-triggered flip-flop)
+Path Group: unconstrained
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00 ^ core/CPU_imm_a3[30]$_DFF_P_/CLK (sky130_fd_sc_hd__dfxtp_1)
+    51    0.16    1.46    1.28    1.28 ^ core/CPU_imm_a3[30]$_DFF_P_/Q (sky130_fd_sc_hd__dfxtp_1)
+                                         core/CPU_imm_a3[10] (net)
+                  1.46    0.00    1.28 ^ core/_15374_/A (sky130_fd_sc_hd__ha_1)
+     6    0.01    0.11    0.46    1.74 v core/_15374_/SUM (sky130_fd_sc_hd__ha_1)
+                                         core/_07528_ (net)
+                  0.11    0.00    1.74 v core/_09912_/A (sky130_fd_sc_hd__or3_1)
+     4    0.01    0.10    0.43    2.17 v core/_09912_/X (sky130_fd_sc_hd__or3_1)
+                                         core/_04286_ (net)
+                  0.10    0.00    2.17 v core/_09980_/A_N (sky130_fd_sc_hd__nand2b_1)
+     1    0.00    0.06    0.16    2.32 v core/_09980_/Y (sky130_fd_sc_hd__nand2b_1)
+                                         core/_04352_ (net)
+                  0.06    0.00    2.32 v core/_09982_/A2 (sky130_fd_sc_hd__o21ai_1)
+     4    0.01    0.22    0.20    2.53 ^ core/_09982_/Y (sky130_fd_sc_hd__o21ai_1)
+                                         core/_04354_ (net)
+                  0.22    0.00    2.53 ^ core/_10204_/A2 (sky130_fd_sc_hd__o21ai_0)
+     1    0.00    0.07    0.10    2.63 v core/_10204_/Y (sky130_fd_sc_hd__o21ai_0)
+                                         core/_04567_ (net)
+                  0.07    0.00    2.63 v core/_10205_/C1 (sky130_fd_sc_hd__o221ai_1)
+     1    0.00    0.17    0.08    2.71 ^ core/_10205_/Y (sky130_fd_sc_hd__o221ai_1)
+                                         core/_04568_ (net)
+                  0.17    0.00    2.71 ^ core/_10206_/S (sky130_fd_sc_hd__mux2_2)
+     1    0.00    0.05    0.35    3.05 v core/_10206_/X (sky130_fd_sc_hd__mux2_2)
+                                         core/_04569_ (net)
+                  0.05    0.00    3.05 v core/_10207_/C1 (sky130_fd_sc_hd__a211o_1)
+     3    0.01    0.07    0.25    3.30 v core/_10207_/X (sky130_fd_sc_hd__a211o_1)
+                                         core/_04570_ (net)
+                  0.07    0.00    3.30 v core/_10210_/A2 (sky130_fd_sc_hd__o21ai_1)
+     4    0.01    0.20    0.19    3.49 ^ core/_10210_/Y (sky130_fd_sc_hd__o21ai_1)
+                                         core/_04573_ (net)
+                  0.20    0.00    3.49 ^ core/_10211_/A (sky130_fd_sc_hd__clkbuf_1)
+    10    0.02    0.22    0.24    3.73 ^ core/_10211_/X (sky130_fd_sc_hd__clkbuf_1)
+                                         core/_04574_ (net)
+                  0.22    0.00    3.73 ^ core/_10642_/A1 (sky130_fd_sc_hd__o21ai_0)
+     1    0.00    0.07    0.11    3.84 v core/_10642_/Y (sky130_fd_sc_hd__o21ai_0)
+                                         core/_00588_ (net)
+                  0.07    0.00    3.84 v core/CPU_Xreg_value_a4[11][20]$_SDFFE_PP0P_/D (sky130_fd_sc_hd__dfxtp_1)
+                                  3.84   data arrival time
+-----------------------------------------------------------------------------
+(Path is unconstrained)
+
+
+
+==========================================================================
+floorplan final report_power
+--------------------------------------------------------------------------
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             7.34e-12   1.48e-12   1.44e-08   1.45e-08  55.2%
+Combinational          1.05e-11   1.72e-11   1.17e-08   1.17e-08  44.8%
+Clock                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.79e-11   1.87e-11   2.62e-08   2.62e-08 100.0%
+                           0.1%       0.1%      99.9%
+
+```
 
 
 
