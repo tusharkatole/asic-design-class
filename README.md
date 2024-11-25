@@ -4246,6 +4246,9 @@ make gui_floorplan
 ![Screenshot 2024-11-25 180251](https://github.com/user-attachments/assets/0055a4ca-7af3-45db-9c0d-d669213ae21b)
 
 
+![Screenshot 2024-11-25 180834](https://github.com/user-attachments/assets/d53065bd-6673-4827-af13-6592ea3e4595)
+
+
 ![Screenshot 2024-11-25 180312](https://github.com/user-attachments/assets/d27722bf-9d7c-4a13-8089-bb67f787f592)
 
 ## Placement
