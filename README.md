@@ -3879,3 +3879,211 @@ Screenshots of commands run and timing report generated
 
 
 </details>
+
+
+## Lab13: OpenROAD: Integrated Chip Physical Design Tool
+ <details>
+  <summary>Click to open </summary>
+
+
+### OpenROAD is a comprehensive tool for integrated chip physical design, enabling a seamless transition from RTL to GDSII. It encompasses key stages of chip design, including synthesis, floorplanning, placement, routing, parasitic extraction, and timing analysis.
+
+Designed to minimize wire length using hierarchical placement algorithms, OpenROAD provides optimization features for both timing and power. Its modular architecture supports extensibility, allowing users to integrate custom algorithms and features.
+
+OpenROAD Flow Controllers
+The OpenROAD project offers two primary flow controllers:
+
+1. OpenROAD-flow-scripts (ORFS)
+ORFS is a flow controller that provides a collection of open-source tools for automated digital ASIC design, enabling a fully automated RTL-to-GDSII design flow. Key features include:
+
+Stages: Synthesis, Placement and Routing (PnR), Static Timing Analysis (STA), Design Rule Check (DRC), and Layout Versus Schematic (LVS).
+Flexibility: Supports customization, allowing users to combine and configure tools based on project needs.
+Physical Design Plugin: Integrates OpenROAD as a plugin for physical design, offering advanced features such as hierarchical placement, global routing, and detailed routing optimization.
+PDK Support: Compatible with several public and private PDKs (under NDA). Publicly available PDKs include GF180, Skywater130, and ASAP7.
+
+2. OpenLane
+OpenLane, developed by Efabless, is another automated RTL-to-GDSII flow similar to ORFS. It is tailored for the Skywater130 MPW Program.
+
+High-Level ORFS Process (RTL to GDSII)
+Below is a brief overview of the stages in the ORFS flow:
+
+1. Configuration
+Customize the framework to meet specific project requirements.
+Define design parameters such as the target technology node, constraints, and tool settings.
+
+3. Design Entry
+Input design files in formats like Verilog.
+Prepare design sources for further processing.
+
+5. Synthesis
+Convert RTL into a gate-level netlist using tools like Yosys and ABC.
+
+7. Floorplanning
+Determine the placement of design modules within the chip area.
+Tools: RePlAce, Capo.
+
+9. Placement
+Precisely position each gate or cell in the chip area.
+Tool: OpenROAD.
+
+11. Routing
+Connect gates and cells using metal wires to form a complete circuit.
+Tools: FastRoute, TritonRoute.
+
+13. Layout Verification
+Verify the correctness of the layout using tools like Magic.
+
+15. GDSII Generation
+Generate the final GDSII layout file using tools like Magic and KLayout.
+For additional details about the OpenROAD project, visit OpenROAD's official documentation.
+
+#### Installation and setting up ORFS
+
+Clone and Install Dependencies
+```c
+git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts
+cd OpenROAD-flow-scripts
+sudo ./setup.sh
+```
+Build
+```c
+./build_openroad.sh --local
+```
+
+## Verify Installation
+
+Use the command
+```c
+make gui_final
+```
+
+![Screenshot 2024-11-24 155134](https://github.com/user-attachments/assets/a895d180-cc6d-437b-addf-8ade04620386)
+
+
+![Screenshot 2024-11-24 155204](https://github.com/user-attachments/assets/67bea75b-2bc6-4329-b465-35a1ae5383ad)
+
+
+Initial Steps:
+
+* We need to create a directory vsdbabysoc inside OpenROAD-flow-scripts/flow/designs/sky130hd
+* Now copy the folders gds, include, lef and lib from the VSDBabySoC folder in your system into this directory.
+* The gds folder would contain the files avsddac.gds and avsdpll.gds
+* The include folder would contain the files sandpiper.vh, sandpiper_gen.vh, sp_default.vh and sp_verilog.vh
+* The gds folder would contain the files avsddac.lef and avsdpll.lef
+* The lib folder would contain the files avsddac.lib and avsdpll.lib
+* Now copy the constraints file(vsdbabysoc_synthesis.sdc) from the VSDBabySoC folder in your system into this directory.
+* Now copy the files(macro.cfg and pin_order.cfg) from the VSDBabySoC folder in your system into this directory.
+
+### Synthesis
+Commands for synthesis
+```c
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
+```
+![Screenshot 2024-11-25 153429](https://github.com/user-attachments/assets/059a4a01-0a94-469a-87d2-3189fd681960)
+
+
+![Screenshot 2024-11-25 153509](https://github.com/user-attachments/assets/4e011b0e-d5e3-4c9d-850d-27949b7248cc)
+
+Synthesis netlist:
+![Screenshot 2024-11-25 154051](https://github.com/user-attachments/assets/8d0a2846-633f-46ed-a2b5-e699a4d5c31f)
+
+
+Synthesis log:
+
+![Screenshot 2024-11-25 154234](https://github.com/user-attachments/assets/35e6c2fe-4d01-4256-a00c-765a22ac4fd5)
+
+
+Synthesis Check:
+
+![Screenshot 2024-11-25 154555](https://github.com/user-attachments/assets/f49d5da3-0fbc-4fd6-aee1-67619b901d52)
+
+
+Synthesis Stats:
+
+![Screenshot 2024-11-25 154914](https://github.com/user-attachments/assets/6cbdc019-3e8d-4029-9c75-d09e2956eeb1)
+
+
+![Screenshot 2024-11-25 154945](https://github.com/user-attachments/assets/514abff0-6ad0-4157-b2e9-f40c8e1855f2)
+
+
+![Screenshot 2024-11-25 155031](https://github.com/user-attachments/assets/345f0879-da30-4231-90e4-f5cb09239d65)
+
+
+![Screenshot 2024-11-25 155126](https://github.com/user-attachments/assets/f6ee83de-a54e-4b03-b7b6-d56515df3795)
+
+
+
+![Screenshot 2024-11-25 155233](https://github.com/user-attachments/assets/58087316-be9d-4cfd-83f3-6ff919316aee)
+
+
+
+## Floorplan
+Commands for floorplan:
+```c
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
+```
+
+![Screenshot 2024-11-25 155921](https://github.com/user-attachments/assets/fff162b4-3211-4f88-81e4-3a3744fe4c35)
+
+
+![Screenshot 2024-11-25 155945](https://github.com/user-attachments/assets/bfaa033f-d603-4602-9408-e156db35b1c6)
+
+use command 
+```c
+make gui_floorplan
+```
+
+![Screenshot 2024-11-25 174030](https://github.com/user-attachments/assets/b67dbcb4-78ba-48dc-92e5-d76e9668e257)
+
+
+![Screenshot 2024-11-25 174103](https://github.com/user-attachments/assets/40186713-c1e7-43ec-a473-63a66fb71e50)
+
+
+![Screenshot 2024-11-25 180251](https://github.com/user-attachments/assets/0055a4ca-7af3-45db-9c0d-d669213ae21b)
+
+
+![Screenshot 2024-11-25 180312](https://github.com/user-attachments/assets/d27722bf-9d7c-4a13-8089-bb67f787f592)
+
+## Placement
+Commands for floorplan:
+```c
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
+```
+
+![Screenshot 2024-11-25 223655](https://github.com/user-attachments/assets/412c05af-15c7-49b2-8228-477de20d77bc)
+
+
+![Screenshot 2024-11-25 223720](https://github.com/user-attachments/assets/068ecff4-aa7c-4a93-992a-09e644b30cf1)
+
+use command 
+```c
+make gui_place
+```
+
+![Screenshot 2024-11-25 224624](https://github.com/user-attachments/assets/a0e2a2cb-f641-4797-b633-841e214605b0)
+
+
+
+## Cts
+
+Commands for cts
+```c
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk cts
+```
+
+![Screenshot 2024-11-25 225205](https://github.com/user-attachments/assets/5275c1eb-0954-47fd-92ee-1748a75f42f3)
+
+
+![Screenshot 2024-11-25 225218](https://github.com/user-attachments/assets/65c29fc8-75ff-46c1-827c-57ce7372faee)
+
+use command 
+```c
+make gui_cts
+```
+
+![Screenshot 2024-11-25 225418](https://github.com/user-attachments/assets/98b57e07-8de9-475f-b0ed-ebc5511cccea)
+
+
+
+  </details>
+
