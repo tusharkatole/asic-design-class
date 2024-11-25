@@ -3974,6 +3974,118 @@ Initial Steps:
 * Now copy the constraints file(vsdbabysoc_synthesis.sdc) from the VSDBabySoC folder in your system into this directory.
 * Now copy the files(macro.cfg and pin_order.cfg) from the VSDBabySoC folder in your system into this directory.
 
+Makefile
+
+
+![Screenshot 2024-11-26 020544](https://github.com/user-attachments/assets/b8a571f0-8eda-47e8-90c7-1c2c629dd5c0)
+
+
+![Screenshot 2024-11-26 020613](https://github.com/user-attachments/assets/96adf2a5-bc99-4782-8461-16507b7ecd1b)
+
+
+
+![Screenshot 2024-11-26 020641](https://github.com/user-attachments/assets/7bb1e658-5cae-477f-aeef-8fdb9270d167)
+
+
+
+![Screenshot 2024-11-26 020709](https://github.com/user-attachments/assets/972089ad-23b3-4c4e-a6bb-e415f37ab82a)
+
+
+
+![Screenshot 2024-11-26 020817](https://github.com/user-attachments/assets/5ba9a883-b69c-4961-ae6d-7894b3ada331)
+
+
+
+![Screenshot 2024-11-26 020932](https://github.com/user-attachments/assets/4eabc76b-b233-4317-b118-953f368acbfd)
+
+
+
+![Screenshot 2024-11-26 021001](https://github.com/user-attachments/assets/960763f6-2754-477c-b108-8737012b8ff7)
+
+
+config.mk file
+![Screenshot 2024-11-26 021114](https://github.com/user-attachments/assets/af84bdaf-d3c1-4051-bfda-6c8de351192d)
+
+```c
+export DESIGN_NICKNAME = vsdbabysoc
+export DESIGN_NAME = vsdbabysoc
+export PLATFORM    = sky130hd
+
+# export VERILOG_FILES_BLACKBOX = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/IPs/*.v
+# export VERILOG_FILES = $(sort $(wildcard $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/*.v))
+# Explicitly list the Verilog files for synthesis
+export VERILOG_FILES = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/vsdbabysoc.v \
+                       /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/module/rvmyth.v \
+                       /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/clk_gate.v
+
+export SDC_FILE      = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/sdc/vsdbabysoc_synthesis.sdc
+
+#export DIE_AREA   = 0 0 1500 1500
+# export CORE_AREA  = 10 10 2910 3510
+
+# export PLACE_DENSITY ?= 0.23
+
+export vsdbabysoc_DIR = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc
+
+export VERILOG_INCLUDE_DIRS = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/include
+
+# export SDC_FILE      = $(wildcard $(vsdbabysoc_DIR)/sdc/*.sdc)
+export ADDITIONAL_GDS  =/home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/gds
+export ADDITIONAL_LEFS  = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/lef
+
+export ADDITIONAL_LIBS = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/lib/avsddac.lib \
+				         /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/src/lib/avsdpll.lib
+# Clock Configuration (vsdbabysoc specific)
+# export CLOCK_PERIOD = 20.0
+export CLOCK_PORT = CLK
+export CLOCK_NET = $(CLOCK_PORT)
+
+# Floorplanning Configuration (vsdbabysoc specific)
+export FP_PIN_ORDER_CFG = /home/tushar/OpenRoad/flow/designs/sky130hd/vsdbabysoc/pin_order.cfg
+export FP_SIZING = absolute
+export DIE_AREA = 0 0 2000 2000
+export CORE_AREA = 10 10 1800 1800
+
+
+# export PL_RESIZER_HOLD_MAX_BUFFER_PERCENT = 80
+# export PL_RESIZER_HOLD_MAX_BUFFER_COUNT = 5000  # Set the buffer limit to a higher value if needed
+# export GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT = 80
+
+# Hold Slack Margin Configuration
+# export PL_RESIZER_HOLD_SLACK_MARGIN = 0.01
+# export GLB_RESIZER_HOLD_SLACK_MARGIN = 0.01
+
+
+export BOTTOM_MARGIN_MULT = 50
+export TOP_MARGIN_MULT = 50
+export LEFT_MARGIN_MULT = 200
+export RIGHT_MARGIN_MULT = 200
+
+# Placement Configuration (vsdbabysoc specific)
+export MACRO_PLACEMENT_CFG = /home/tushar/OpenRoad/flow/designs/sky130hd/VSDBabySoC/macro.cfg
+
+# Magic Tool Configuration
+export MAGIC_ZEROIZE_ORIGIN = 0
+export MAGIC_EXT_USE_GDS = 1
+
+export SYNTH_HIERARCHICAL = 1
+
+# export RTLMP_BOUNDARY_WT = 0
+#  MACRO_PLACE_HALO = 100 100
+# export MACRO_PLACE_CHANNEL = 200 200
+
+# CTS tuning
+# export CTS_BUF_DISTANCE = 600
+# export SKIP_GATE_CLONING = 1
+
+# export SETUP_SLACK_MARGIN = 0.2
+
+# This is high, some SRAMs should probably be converted
+# to real SRAMs and not instantiated as flops
+# export SYNTH_MEMORY_MAX_BITS ?= 42000
+```
+
+
 ### Synthesis
 Commands for synthesis
 ```c
