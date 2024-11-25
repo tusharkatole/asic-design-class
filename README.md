@@ -3990,10 +3990,11 @@ Initial Steps:
 ![Screenshot 2024-11-26 021001](https://github.com/user-attachments/assets/960763f6-2754-477c-b108-8737012b8ff7)
 
 
-#### config.mk file
+config.mk file Screenshot
 
 ![Screenshot 2024-11-26 021114](https://github.com/user-attachments/assets/af84bdaf-d3c1-4051-bfda-6c8de351192d)
 
+config.mk file
 ```c
 export DESIGN_NICKNAME = vsdbabysoc
 export DESIGN_NAME = vsdbabysoc
