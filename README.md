@@ -4245,11 +4245,96 @@ make gui_floorplan
 
 ![Screenshot 2024-11-25 180251](https://github.com/user-attachments/assets/0055a4ca-7af3-45db-9c0d-d669213ae21b)
 
+![Screenshot 2024-11-26 041913](https://github.com/user-attachments/assets/93dff64d-7a6a-4c65-80f5-44770c5d2d24)
 
-![Screenshot 2024-11-25 180834](https://github.com/user-attachments/assets/d53065bd-6673-4827-af13-6592ea3e4595)
+![Screenshot 2024-11-26 043052](https://github.com/user-attachments/assets/362aeb72-d8f0-436c-a062-51861655438c)
 
 
-![Screenshot 2024-11-25 180312](https://github.com/user-attachments/assets/d27722bf-9d7c-4a13-8089-bb67f787f592)
+![Screenshot 2024-11-26 043304](https://github.com/user-attachments/assets/2d7fbc58-3ce2-494a-90cc-e0aba8e80b97)
+
+FLOORPLAN_LOG
+
+![Screenshot 2024-11-26 044834](https://github.com/user-attachments/assets/936ad849-a363-4e14-a453-8f226c9ccdc1)
+
+
+
+FLOORPLAN TIMING REPORT
+
+![Screenshot 2024-11-26 045417](https://github.com/user-attachments/assets/307d9c88-ad4a-4c63-89ff-6e9e796f204f)
+
+
+```c
+
+==========================================================================
+floorplan final report_tns
+--------------------------------------------------------------------------
+tns 0.00
+
+==========================================================================
+floorplan final report_wns
+--------------------------------------------------------------------------
+wns 0.00
+
+==========================================================================
+floorplan final report_worst_slack
+--------------------------------------------------------------------------
+worst slack INF
+
+==========================================================================
+floorplan final report_checks -path_delay min
+--------------------------------------------------------------------------
+No paths found.
+
+==========================================================================
+floorplan final report_checks -path_delay max
+--------------------------------------------------------------------------
+No paths found.
+
+==========================================================================
+floorplan final report_checks -unconstrained
+--------------------------------------------------------------------------
+Startpoint: core.CPU_reset_a3$_DFF_P_ (rising edge-triggered flip-flop)
+Endpoint: core.CPU_Xreg_value_a4[10][13]$_SDFFE_PP0P_
+          (rising edge-triggered flip-flop)
+Path Group: unconstrained
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00 ^ core.CPU_reset_a3$_DFF_P_/CLK (sky130_fd_sc_hd__dfxtp_1)
+   591    1.46   13.42    9.67    9.67 ^ core.CPU_reset_a3$_DFF_P_/Q (sky130_fd_sc_hd__dfxtp_1)
+                                         core.CPU_reset_a3 (net)
+                 13.42    0.00    9.67 ^ _10124_/A (sky130_fd_sc_hd__inv_1)
+   464    1.04    0.00   21.17   30.85 v _10124_/Y (sky130_fd_sc_hd__inv_1)
+                                         _04513_ (net)
+                  0.00    0.00   30.85 v _10227_/A (sky130_fd_sc_hd__nand3_1)
+    31    0.08    0.78    0.52   31.37 ^ _10227_/Y (sky130_fd_sc_hd__nand3_1)
+                                         _04613_ (net)
+                  0.78    0.00   31.37 ^ _10232_/B1 (sky130_fd_sc_hd__o221ai_1)
+     1    0.00    0.20    0.22   31.59 v _10232_/Y (sky130_fd_sc_hd__o221ai_1)
+                                         _00548_ (net)
+                  0.20    0.00   31.59 v core.CPU_Xreg_value_a4[10][13]$_SDFFE_PP0P_/D (sky130_fd_sc_hd__dfxtp_1)
+                                 31.59   data arrival time
+-----------------------------------------------------------------------------
+(Path is unconstrained)
+
+
+
+==========================================================================
+floorplan final report_power
+--------------------------------------------------------------------------
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             7.92e-12   3.67e-12   1.45e-08   1.45e-08  58.0%
+Combinational          1.01e-11   1.77e-11   1.04e-08   1.05e-08  42.0%
+Clock                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.80e-11   2.13e-11   2.49e-08   2.49e-08 100.0%
+                           0.1%       0.1%      99.8%
+```
 
 ## Placement
 Commands for Placement:
