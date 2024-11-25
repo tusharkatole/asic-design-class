@@ -3893,7 +3893,7 @@ Designed to minimize wire length using hierarchical placement algorithms, OpenRO
 OpenROAD Flow Controllers
 The OpenROAD project offers two primary flow controllers:
 
-1. OpenROAD-flow-scripts (ORFS)
+### OpenROAD-flow-scripts (ORFS)
 ORFS is a flow controller that provides a collection of open-source tools for automated digital ASIC design, enabling a fully automated RTL-to-GDSII design flow. Key features include:
 
 Stages: Synthesis, Placement and Routing (PnR), Static Timing Analysis (STA), Design Rule Check (DRC), and Layout Versus Schematic (LVS).
@@ -3901,7 +3901,7 @@ Flexibility: Supports customization, allowing users to combine and configure too
 Physical Design Plugin: Integrates OpenROAD as a plugin for physical design, offering advanced features such as hierarchical placement, global routing, and detailed routing optimization.
 PDK Support: Compatible with several public and private PDKs (under NDA). Publicly available PDKs include GF180, Skywater130, and ASAP7.
 
-2. OpenLane
+### OpenLane
 OpenLane, developed by Efabless, is another automated RTL-to-GDSII flow similar to ORFS. It is tailored for the Skywater130 MPW Program.
 
 High-Level ORFS Process (RTL to GDSII)
@@ -4045,7 +4045,7 @@ make gui_floorplan
 ![Screenshot 2024-11-25 180312](https://github.com/user-attachments/assets/d27722bf-9d7c-4a13-8089-bb67f787f592)
 
 ## Placement
-Commands for floorplan:
+Commands for Placement:
 ```c
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
 ```
@@ -4061,6 +4061,7 @@ make gui_place
 ```
 
 ![Screenshot 2024-11-25 224624](https://github.com/user-attachments/assets/a0e2a2cb-f641-4797-b633-841e214605b0)
+
 
 
 
@@ -4082,6 +4083,83 @@ make gui_cts
 ```
 
 ![Screenshot 2024-11-25 225418](https://github.com/user-attachments/assets/98b57e07-8de9-475f-b0ed-ebc5511cccea)
+
+clock tree synthesis
+![Screenshot 2024-11-26 000245](https://github.com/user-attachments/assets/1eda662d-8073-4394-a07d-9c3252134275)
+
+![Screenshot 2024-11-26 000524](https://github.com/user-attachments/assets/0fde09d9-b05b-4736-9d40-595005bfed96)
+
+
+![Screenshot 2024-11-26 000654](https://github.com/user-attachments/assets/ea396b32-babb-49d3-a8c7-9a75aa54a404)
+
+
+## Route
+
+Commands for cts
+```c
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk routr
+```
+![Screenshot 2024-11-25 234206](https://github.com/user-attachments/assets/7d8d604e-1f57-4cce-b5f5-dd6213873f7c)
+
+
+
+use the command
+```c
+make gui_route
+```
+![Screenshot 2024-11-26 001836](https://github.com/user-attachments/assets/a8657917-750a-451a-9c1d-b343048bf002)
+
+
+![Screenshot 2024-11-26 001801](https://github.com/user-attachments/assets/fa639eb9-05fe-41a1-af36-f10856a3dc65)
+
+
+### For Final Layout
+
+use the command
+```c
+make gui_final
+```
+
+
+![Screenshot 2024-11-26 003036](https://github.com/user-attachments/assets/684d3179-fb89-4b06-b6a8-f76af95fac75)
+
+
+
+![Screenshot 2024-11-26 002336](https://github.com/user-attachments/assets/f5e04e62-a0d9-4a45-b14d-afa2a88712f9)
+
+
+![Screenshot 2024-11-26 002806](https://github.com/user-attachments/assets/c91e3e61-19ac-441d-9b8b-c0d290477fcd)
+
+
+![Screenshot 2024-11-26 003127](https://github.com/user-attachments/assets/a62b007b-2e1e-4c4a-9c56-d6953ea97cd9)
+
+
+
+![Screenshot 2024-11-26 003305](https://github.com/user-attachments/assets/699dbd40-0398-48a4-8fa0-26c2da095479)
+
+
+
+![Screenshot 2024-11-26 003309](https://github.com/user-attachments/assets/6d14b154-75c3-4fb3-8431-ab836405d089)
+
+
+### To view the GDS file in the klayout type the following commands
+
+```c
+ klayout -e -nn ./platforms/nangate45/FreePDK45.lyt -l ./platforms/nangate45/FreePDK45.lyp ./results/nangate45/gcd/base/6_final.gds
+```
+
+![Screenshot 2024-11-26 010436](https://github.com/user-attachments/assets/ea49c129-faee-4593-ab4c-76f70a8222bf)
+
+
+
+![Screenshot 2024-11-26 010750](https://github.com/user-attachments/assets/685d0f45-981a-4df9-9d00-7324d27c929c)
+
+
+
+
+
+
+
 
 
 
