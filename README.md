@@ -3977,31 +3977,21 @@ Initial Steps:
 #### Makefile
 ![Screenshot 2024-11-26 020544](https://github.com/user-attachments/assets/b8a571f0-8eda-47e8-90c7-1c2c629dd5c0)
 
-
 ![Screenshot 2024-11-26 020613](https://github.com/user-attachments/assets/96adf2a5-bc99-4782-8461-16507b7ecd1b)
-
-
 
 ![Screenshot 2024-11-26 020641](https://github.com/user-attachments/assets/7bb1e658-5cae-477f-aeef-8fdb9270d167)
 
-
-
 ![Screenshot 2024-11-26 020709](https://github.com/user-attachments/assets/972089ad-23b3-4c4e-a6bb-e415f37ab82a)
-
-
 
 ![Screenshot 2024-11-26 020817](https://github.com/user-attachments/assets/5ba9a883-b69c-4961-ae6d-7894b3ada331)
 
-
-
 ![Screenshot 2024-11-26 020932](https://github.com/user-attachments/assets/4eabc76b-b233-4317-b118-953f368acbfd)
-
-
 
 ![Screenshot 2024-11-26 021001](https://github.com/user-attachments/assets/960763f6-2754-477c-b108-8737012b8ff7)
 
 
 #### config.mk file
+
 ![Screenshot 2024-11-26 021114](https://github.com/user-attachments/assets/af84bdaf-d3c1-4051-bfda-6c8de351192d)
 
 ```c
@@ -4085,6 +4075,7 @@ export SYNTH_HIERARCHICAL = 1
 
 
 ### Synthesis
+
 Commands for synthesis
 ```c
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
@@ -4094,9 +4085,9 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 
 ![Screenshot 2024-11-25 153509](https://github.com/user-attachments/assets/4e011b0e-d5e3-4c9d-850d-27949b7248cc)
 
-
 Synthesis netlist:
-![Screenshot 2024-11-25 154051](https://github.com/user-attachments/assets/8d0a2846-633f-46ed-a2b5-e699a4d5c31f)
+
+![Screenshot 2024-11-26 024328](https://github.com/user-attachments/assets/ca0a89bb-fb38-451e-957c-c38dbf09faba)
 
 
 Synthesis log:
