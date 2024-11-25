@@ -4093,31 +4093,19 @@ Synthesis netlist:
 
 Synthesis log:
 
-![Screenshot 2024-11-25 154234](https://github.com/user-attachments/assets/35e6c2fe-4d01-4256-a00c-765a22ac4fd5)
+![Screenshot 2024-11-26 044834](https://github.com/user-attachments/assets/2a32fb20-55e3-4f87-b2b0-07bef5038f79)
 
 
 Synthesis Check:
 
-![Screenshot 2024-11-25 154555](https://github.com/user-attachments/assets/f49d5da3-0fbc-4fd6-aee1-67619b901d52)
-
+![Screenshot 2024-11-26 050257](https://github.com/user-attachments/assets/5821b416-af15-4036-a4d2-6cca88df55f6)
 
 Synthesis Stats:
 
-![Screenshot 2024-11-25 154914](https://github.com/user-attachments/assets/6cbdc019-3e8d-4029-9c75-d09e2956eeb1)
+![Screenshot 2024-11-26 050508](https://github.com/user-attachments/assets/85b3740b-66f4-4b08-943e-fbb7010b4685)
 
 
-![Screenshot 2024-11-25 154945](https://github.com/user-attachments/assets/514abff0-6ad0-4157-b2e9-f40c8e1855f2)
-
-
-![Screenshot 2024-11-25 155031](https://github.com/user-attachments/assets/345f0879-da30-4231-90e4-f5cb09239d65)
-
-
-![Screenshot 2024-11-25 155126](https://github.com/user-attachments/assets/f6ee83de-a54e-4b03-b7b6-d56515df3795)
-
-
-
-![Screenshot 2024-11-25 155233](https://github.com/user-attachments/assets/58087316-be9d-4cfd-83f3-6ff919316aee)
-
+![Screenshot 2024-11-26 050540](https://github.com/user-attachments/assets/d09310e4-c8c1-4ea0-9f04-47319441c4f8)
 
 #### Synthesis Report:
 
