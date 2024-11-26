@@ -4662,5 +4662,14 @@ make gui_final
 ![power](https://github.com/user-attachments/assets/75777155-4709-4ba2-8a17-a18d1231ce87)
 
 
+## QoR Report:
+
+![Screenshot 2024-11-26 133341](https://github.com/user-attachments/assets/36aa276e-dd80-403a-a67c-2f70dc2cf288)
+
+
+![Screenshot 2024-11-26 133416](https://github.com/user-attachments/assets/3cf8ffe7-9245-4dfe-a0ad-c1a84cc701a1)
+
+
+
   </details>
 
