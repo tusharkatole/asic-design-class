@@ -4634,6 +4634,32 @@ make gui_final
 
 ![Screenshot 2024-11-26 010750](https://github.com/user-attachments/assets/685d0f45-981a-4df9-9d00-7324d27c929c)
 
+## Heatmap Images:
+
+- VSDBabySoc
+
+![vsd](https://github.com/user-attachments/assets/2bfb7afc-b261-4089-bae0-b73eadb6651e)
+
+- Placement
+
+![placement](https://github.com/user-attachments/assets/ab6e3d8e-53ef-4aa5-bcad-a8c325c01d60)
+
+
+- Estimated Congestion
+
+![e_cong](https://github.com/user-attachments/assets/66a48458-8b69-49b4-b133-abe1e59bb331)
+
+- Routing Congestion
+
+![r_cong](https://github.com/user-attachments/assets/afea857a-a4f5-4f4b-9d89-f2df61d3d9a2)
+
+- IR Drop
+
+![ir_drop](https://github.com/user-attachments/assets/6c14cd4a-2802-4890-b0ee-2cbbbd2041e4)
+
+- Power
+
+![power](https://github.com/user-attachments/assets/75777155-4709-4ba2-8a17-a18d1231ce87)
 
 
   </details>
