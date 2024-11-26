@@ -4565,14 +4565,6 @@ make gui_cts
 ![image](https://github.com/user-attachments/assets/e800b68d-fc07-408a-933e-124232cb8c2e)
 
 
-clock tree synthesis
-![Screenshot 2024-11-26 000245](https://github.com/user-attachments/assets/1eda662d-8073-4394-a07d-9c3252134275)
-
-![Screenshot 2024-11-26 000524](https://github.com/user-attachments/assets/0fde09d9-b05b-4736-9d40-595005bfed96)
-
-![Screenshot 2024-11-26 000654](https://github.com/user-attachments/assets/ea396b32-babb-49d3-a8c7-9a75aa54a404)
-
-
 ## Route
 
 Commands for cts
