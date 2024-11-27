@@ -4569,7 +4569,7 @@ make gui_cts
 
 Commands for cts
 ```c
-make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk routr
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk route
 ```
 ![Screenshot 2024-11-25 234206](https://github.com/user-attachments/assets/7d8d604e-1f57-4cce-b5f5-dd6213873f7c)
 
@@ -4614,47 +4614,38 @@ make gui_final
 ![Screenshot 2024-11-26 003309](https://github.com/user-attachments/assets/6d14b154-75c3-4fb3-8431-ab836405d089)
 
 
-### To view the GDS file in the klayout type the following commands
-
-```c
- klayout -e -nn ./platforms/nangate45/FreePDK45.lyt -l ./platforms/nangate45/FreePDK45.lyp ./results/nangate45/gcd/base/6_final.gds
-```
-
-![Screenshot 2024-11-26 010436](https://github.com/user-attachments/assets/ea49c129-faee-4593-ab4c-76f70a8222bf)
-
-
-
-![Screenshot 2024-11-26 010750](https://github.com/user-attachments/assets/685d0f45-981a-4df9-9d00-7324d27c929c)
 
 ## Heatmap Images:
 
-- VSDBabySoc
+1.Placement Density:
 
-![vsd](https://github.com/user-attachments/assets/2bfb7afc-b261-4089-bae0-b73eadb6651e)
-
-- Placement
-
-![placement](https://github.com/user-attachments/assets/ab6e3d8e-53ef-4aa5-bcad-a8c325c01d60)
+![Screenshot 2024-11-27 104049](https://github.com/user-attachments/assets/7f5a7293-f8f2-4a2a-9dee-91db51bb986c)
 
 
-- Estimated Congestion
+2.Power Density:
 
-![e_cong](https://github.com/user-attachments/assets/66a48458-8b69-49b4-b133-abe1e59bb331)
-
-- Routing Congestion
-
-![r_cong](https://github.com/user-attachments/assets/afea857a-a4f5-4f4b-9d89-f2df61d3d9a2)
-
-- IR Drop
-
-![ir_drop](https://github.com/user-attachments/assets/6c14cd4a-2802-4890-b0ee-2cbbbd2041e4)
-
-- Power
-
-![power](https://github.com/user-attachments/assets/75777155-4709-4ba2-8a17-a18d1231ce87)
+![Screenshot 2024-11-27 104049](https://github.com/user-attachments/assets/3d3dac07-ed4f-46a9-a883-a3e2859bcf6b)
 
 
-## QoR Report:
+
+3.Routing Congestion:
+
+![Screenshot 2024-11-27 104237](https://github.com/user-attachments/assets/b002ca0e-4226-42f6-ae6c-0531059a9873)
+
+
+
+
+4.Estimated Congestion(RUDY):
+
+![Screenshot 2024-11-27 104256](https://github.com/user-attachments/assets/5fd43eec-67c8-4426-928e-2beafaf0f5bd)
+
+
+5.IR Drop:
+
+![Screenshot 2024-11-27 104318](https://github.com/user-attachments/assets/227ccb01-ac79-4fdf-a18f-160aa677dc63)
+
+
+## QOR Report:
 
 ![Screenshot 2024-11-26 133341](https://github.com/user-attachments/assets/36aa276e-dd80-403a-a67c-2f70dc2cf288)
 
